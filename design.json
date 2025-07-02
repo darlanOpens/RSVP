@@ -1,0 +1,96 @@
+{
+  "name": "lux-vintage-lettermark-key",
+  "description": "Luxurious, vintage-academic identity built around a metallic lettermark over a dark backdrop and an antique object silhouette.",
+  "color_palette": {
+    "background_dark": "#0D0B05",            
+    "gold_primary":   "#C8A75D",           
+    "gold_mid":       "#977640",             
+    "gold_dark":      "#604618",            
+    "accent_warm":    "#DFC27A",              
+    "on_dark_text":   "#F5E8C8"               
+  },
+  "typography": {
+    "display": {
+      "font_family": "High-contrast serif (e.g. Horsham Serial Heavy, Trajan, Cinzel)",
+      "font_size": "10–14vw",
+      "font_weight": 900,
+      "letter_spacing": "0.06–0.10em",
+      "text_transform": "uppercase",
+      "separators": {
+        "glyph": "◆",                         
+        "size_ratio": 0.08,                   
+        "color": "gold_primary"
+      }
+    },
+    "subtitle": {
+      "font_family": "Same serif or complementary humanist sans",
+      "font_size": "1.1rem",
+      "font_weight": 500,
+      "letter_spacing": "0.20em",
+      "text_transform": "uppercase",
+      "color": "gold_primary"
+    }
+  },
+  "iconography": {
+    "hero_object": {
+      "shape": "antique skeleton key (horizontal)",
+      "render_style": "photoreal + soft metallic shading",
+      "position": "centered behind lettermark",
+      "scale_ratio_to_text": 1.1,             
+      "opacity_top_to_bottom": "0.4 → 1.0",   
+      "blend_mode": "overlay"
+    },
+    "micro_shapes": {
+      "diamond_separator": "see typography.display.separators"
+    }
+  },
+  "effects": {
+    "metallic_gradient": {
+      "type": "linear",
+      "angle": 135,
+      "stops": [
+        { "color": "gold_light (~#F3DFA0)", "position": 0 },
+        { "color": "gold_primary",          "position": 0.4 },
+        { "color": "gold_mid",              "position": 0.7 },
+        { "color": "gold_dark",             "position": 1 }
+      ]
+    },
+    "texture_noise": {
+      "opacity": 0.10,
+      "blend_mode": "overlay"
+    },
+    "text_shadow": {
+      "offset_x": 0,
+      "offset_y": 4,
+      "blur": 8,
+      "color": "rgba(0,0,0,0.4)"
+    }
+  },
+  "layout": {
+    "canvas": {
+      "background_color": "background_dark",
+      "padding_vh": "10vh",
+      "padding_vw": "10vw"
+    },
+    "stack_order": [
+      "hero_object",
+      "lettermark",
+      "subtitle"
+    ],
+    "alignment": "center",
+    "spacing": {
+      "between_lettermark_and_subtitle": "2.5rem"
+    }
+  },
+  "export_recommendations": {
+    "formats": ["PNG (24-bit, transparency)", "SVG (with gradient fills)", "PDF"],
+    "min_resolution": "3000×3000 px",
+    "color_profile": "sRGB IEC61966-2.1"
+  },
+  "usage_guidelines": {
+    "contrast": "Always place gold elements over the dark background to preserve luminosity.",
+    "scaling": "Maintain key-to-lettermark ratio; reduce diamond separators proportionally.",
+    "backgrounds": "If alternate background is required, use deep desaturated blues or charcoals (#101820 – #182024) only.",
+    "restrictions": "Do not recolor the metallic elements; do not alter the serif’s letterspacing; avoid additional decorative graphics."
+  }
+}

@@ -1,0 +1,59 @@
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3DFA0;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#C8A75D;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#977640;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#604618;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Corpo principal da chave -->
+  <path d="M100 150 L550 150" stroke="url(#goldGradient)" stroke-width="12" fill="none" filter="url(#shadow)"/>
+  
+  <!-- Dentes da chave -->
+  <g transform="translate(550, 150)">
+    <path d="M0 0 L50 0 L50 -20 L60 -20 L60 -10 L70 -10 L70 -30 L80 -30 L80 0 L100 0" 
+          stroke="url(#goldGradient)" stroke-width="8" fill="none" filter="url(#shadow)"/>
+  </g>
+  
+  <!-- Cabeça ornamental da chave -->
+  <g transform="translate(100, 150)">
+    <!-- Círculo externo -->
+    <circle cx="0" cy="0" r="45" fill="none" stroke="url(#goldGradient)" stroke-width="10" filter="url(#shadow)"/>
+    
+    <!-- Padrão interno ornamental -->
+    <circle cx="0" cy="0" r="30" fill="none" stroke="url(#goldGradient)" stroke-width="6" opacity="0.8"/>
+    
+    <!-- Cruz central -->
+    <path d="M-15 0 L15 0 M0 -15 L0 15" stroke="url(#goldGradient)" stroke-width="4" opacity="0.6"/>
+    
+    <!-- Pequenos círculos decorativos -->
+    <circle cx="-15" cy="-15" r="3" fill="url(#goldGradient)" opacity="0.7"/>
+    <circle cx="15" cy="-15" r="3" fill="url(#goldGradient)" opacity="0.7"/>
+    <circle cx="-15" cy="15" r="3" fill="url(#goldGradient)" opacity="0.7"/>
+    <circle cx="15" cy="15" r="3" fill="url(#goldGradient)" opacity="0.7"/>
+  </g>
+  
+  <!-- Detalhes decorativos ao longo do corpo -->
+  <g transform="translate(200, 150)">
+    <rect x="-2" y="-15" width="4" height="30" fill="url(#goldGradient)" opacity="0.5"/>
+  </g>
+  <g transform="translate(300, 150)">
+    <rect x="-2" y="-15" width="4" height="30" fill="url(#goldGradient)" opacity="0.5"/>
+  </g>
+  <g transform="translate(400, 150)">
+    <rect x="-2" y="-15" width="4" height="30" fill="url(#goldGradient)" opacity="0.5"/>
+  </g>
+</svg> 
