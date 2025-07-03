@@ -1,4 +1,8 @@
-# ✨ Resumo das Implementações - CX IN HOUSE
+# ✨ Resumo das Implementações - E.L.G.A.
+
+## 🎯 Identidade do Projeto
+
+**E.L.G.A. — Experience-Led Growth Academy** é o hub de mentoria premium da Opens, conduzido por Douglas Conrad. O projeto foi desenvolvido com uma identidade visual luxuosa e vintage-acadêmica, centrada em elementos metálicos dourados sobre fundo escuro.
 
 ## 🎯 O que foi implementado:
 
@@ -85,7 +89,7 @@ npm run dev
 ## 📋 Seções da Landing Page (ordem):
 
 1. **Header** - Logo ELGA
-2. **Hero** - CX IN HOUSE com CTA
+2. **Hero** - E.L.G.A. com CTA
 3. **Douglas Conrad** - Mentor principal ⭐ **NOVO**
 4. **Cases de Sucesso** - 8 clientes em grid ⭐ **NOVO**
 5. **Apoiadores** - ELGA + parceiros

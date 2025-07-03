@@ -64,15 +64,16 @@ export default function EventLandingPage() {
 
             {/* Título Principal com Tipografia Luxuosa */}
             <div className="space-y-6 max-w-5xl">
-              <h1 className="font-display text-6xl lg:text-8xl text-metallic-gradient text-shadow-luxury">
-                CX <span className="text-[#C8A75D]">◆</span> IN <span className="text-[#C8A75D]">◆</span> HOUSE
+              <h1 className="font-display text-2xl lg:text-5xl text-metallic-gradient text-shadow-luxury">
+               Transformando Atendimento em Receita
               </h1>
               <p className="text-2xl lg:text-3xl text-[#F5E8C8] font-light tracking-wide">
-                Experiência do Cliente como Centro de Receita
+                Experience-Led Growth Academy
               </p>
-              <p className="text-lg text-[#DFC27A] max-w-3xl mx-auto leading-relaxed mt-8">
-                Descubra as estratégias mais avançadas para transformar a experiência do cliente em seu principal
-                motor de crescimento e receita recorrente.
+                              <p className="text-lg text-[#DFC27A] max-w-3xl mx-auto leading-relaxed mt-8">
+                Hub de mentoria premium da Opens. Conduzido por Douglas Conrad, criador do Método Experience-Led Growth, 
+                o programa reúne clientes selecionados em sessões exclusivas de 60 minutos ao vivo para revelar estratégias 
+                que convertem o atendimento em receita previsível.
               </p>
             </div>
 
@@ -94,18 +95,18 @@ export default function EventLandingPage() {
             {/* Detalhes do Evento em Linha */}
             <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-[#DFC27A]">
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-[#C8A75D]" />
-                <span className="font-semibold">21 de Novembro</span>
-              </div>
-              <span className="text-[#C8A75D]">◆</span>
-              <div className="flex items-center gap-2">
                 <Clock className="w-5 h-5 text-[#C8A75D]" />
-                <span className="font-semibold">16h30 - 21h30</span>
+                <span className="font-semibold">60 minutos ao vivo</span>
               </div>
               <span className="text-[#C8A75D]">◆</span>
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-[#C8A75D]" />
-                <span className="font-semibold">São Paulo, SP</span>
+                <span className="font-semibold">Google Meet/Zoom</span>
+              </div>
+              <span className="text-[#C8A75D]">◆</span>
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-[#C8A75D]" />
+                <span className="font-semibold">Clientes Selecionados</span>
               </div>
             </div>
           </div>
@@ -150,11 +151,6 @@ export default function EventLandingPage() {
             <div className="space-y-8">
               {/* Título da Seção */}
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 border border-[#C8A75D]/50 text-[#C8A75D] text-sm font-semibold tracking-wider uppercase mb-6 rounded">
-                  <Star className="w-4 h-4" />
-                  Mentor Principal
-                  <Star className="w-4 h-4" />
-                </div>
                 <h2 className="font-display text-5xl text-metallic-gradient text-shadow-luxury mb-4">
                   Douglas Conrad
                 </h2>
@@ -210,89 +206,125 @@ export default function EventLandingPage() {
         </div>
       </section>
 
-      {/* Seção Cases de Sucesso */}
-      <section className="py-32 border-t border-[#604618] overflow-hidden">
-        <div className="container mx-auto px-6">
+      {/* Seção Clientes de Sucesso - Design Premium */}
+      <section className="py-24 border-t border-[#604618] relative overflow-hidden">
+        {/* Background decorativo elegante */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 50% 30%, rgba(200, 167, 93, 0.4) 0%, transparent 60%)`,
+          }}></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative">
+          {/* Header Premium */}
           <div className="text-center mb-20">
-            <h2 className="font-display text-5xl lg:text-6xl text-metallic-gradient mb-8 text-shadow-luxury leading-tight">
-              Conheça as metodologias que levaram
+            <Badge className="bg-[#C8A75D]/10 text-[#C8A75D] border-[#C8A75D]/30 mb-8 px-6 py-2">
+              <Star className="w-4 h-4 mr-2" />
+              Histórias de Sucesso
+              <Star className="w-4 h-4 ml-2" />
+            </Badge>
+            
+            <h2 className="font-display text-4xl lg:text-5xl text-metallic-gradient text-shadow-luxury leading-tight max-w-4xl mx-auto">
+              Conheça as metodologias que levaram<br />
+              <span className="text-[#C8A75D]">sucesso a essas empresas</span>
             </h2>
-            <h2 className="font-display text-5xl lg:text-6xl text-metallic-gradient mb-10 text-shadow-luxury leading-tight">
-              sucesso a essas empresas
-            </h2>
-            <div className="w-32 h-1 bg-metallic-gradient mx-auto rounded-full"></div>
+            
+            {/* Linha decorativa */}
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <div className="w-16 h-1 bg-metallic-gradient rounded-full"></div>
+              <Diamond className="w-4 h-4 text-[#C8A75D]" />
+              <div className="w-16 h-1 bg-metallic-gradient rounded-full"></div>
+            </div>
           </div>
           
-          {/* Grid superior com 4 empresas */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8 max-w-6xl mx-auto">
-            {clientLogos.slice(0, 4).map((client) => (
-              <div key={client.name} className="group">
-                <div className={`relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-3xl ${client.bgColor}`} style={{ aspectRatio: '16/10' }}>
-                  {/* Gradiente de overlay para melhor contraste */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/40"></div>
+          {/* Grid Premium 4x2 */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
+            {clientLogos.map((client, index) => (
+              <div 
+                key={client.name} 
+                className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
+                style={{ 
+                  animationDelay: `${index * 0.15}s`,
+                  animation: `fadeInUp 0.8s ease-out forwards ${index * 0.15}s`
+                }}
+              >
+                <div className="relative bg-gradient-to-br from-[#977640]/10 to-[#604618]/5 p-8 rounded-2xl border border-[#C8A75D]/20 hover:border-[#C8A75D]/60 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#C8A75D]/20 h-48 flex items-center justify-center">
                   
-                  {/* Logo centralizado */}
-                  <div className="absolute inset-0 flex items-center justify-center p-8">
+                  {/* Efeito de brilho no hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#C8A75D]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Container da logo */}
+                  <div className="relative z-10 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 w-full h-32 flex items-center justify-center">
                     <Image
                       src={`/clientes_logo/${client.filename}`}
-                      alt={client.name}
-                      width={200}
-                      height={100}
-                      className="max-w-full max-h-full object-contain transition-all duration-300 group-hover:scale-110"
-                      style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))' }}
+                      alt={`Logo ${client.name}`}
+                      width={120}
+                      height={80}
+                      className="object-contain max-w-full max-h-full filter drop-shadow-md group-hover:drop-shadow-lg transition-all duration-500"
                     />
                   </div>
                   
-                  {/* Efeito de brilho no hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-r from-transparent via-white to-transparent -skew-x-12 translate-x-full group-hover:-translate-x-full animate-[shimmer_1.5s_ease-in-out]"></div>
+                  {/* Badge de sucesso no hover */}
+                  <div className="absolute -top-3 -right-3 bg-metallic-gradient text-[#0D0B05] px-3 py-2 rounded-full font-display text-xs font-bold shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 flex items-center gap-1">
+                    <Crown className="w-3 h-3" />
+                    SUCESSO
+                  </div>
+                  
+                  {/* Info overlay no hover */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <div className="bg-[#0D0B05]/95 backdrop-blur-sm rounded-lg p-3 border border-[#C8A75D]/40">
+                      <h3 className="font-display text-sm text-[#C8A75D] font-bold text-center mb-1">
+                        {client.name.toUpperCase()}
+                      </h3>
+                      <p className="text-[#DFC27A] text-xs text-center">
+                        Transformação Comprovada
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                
-                {/* Nome da empresa */}
-                <h3 className="mt-4 text-center font-display text-xl text-[#C8A75D] font-bold tracking-wider">
-                  {client.name.toUpperCase()}
-                </h3>
               </div>
             ))}
           </div>
           
-          {/* Grid inferior com 4 empresas */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {clientLogos.slice(4, 8).map((client) => (
-              <div key={client.name} className="group">
-                <div className={`relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-3xl ${client.bgColor}`} style={{ aspectRatio: '16/10' }}>
-                  {/* Gradiente de overlay para melhor contraste */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/40"></div>
-                  
-                  {/* Logo centralizado */}
-                  <div className="absolute inset-0 flex items-center justify-center p-8">
-                    <Image
-                      src={`/clientes_logo/${client.filename}`}
-                      alt={client.name}
-                      width={200}
-                      height={100}
-                      className="max-w-full max-h-full object-contain transition-all duration-300 group-hover:scale-110"
-                      style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))' }}
-                    />
-                  </div>
-                  
-                  {/* Efeito de brilho no hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-r from-transparent via-white to-transparent -skew-x-12 translate-x-full group-hover:-translate-x-full animate-[shimmer_1.5s_ease-in-out]"></div>
+          {/* CTA Section Premium */}
+          <div className="text-center max-w-5xl mx-auto">
+            <div className="bg-gradient-to-br from-[#C8A75D]/10 to-[#977640]/5 p-10 rounded-3xl border border-[#C8A75D]/30 backdrop-blur-sm">
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="bg-metallic-gradient text-[#0D0B05] px-4 py-2 rounded-full font-display text-sm font-bold">
+                  8 EMPRESAS
                 </div>
-                
-                {/* Nome da empresa */}
-                <h3 className="mt-4 text-center font-display text-xl text-[#C8A75D] font-bold tracking-wider">
-                  {client.name.toUpperCase()}
-                </h3>
+                <span className="text-[#C8A75D] text-2xl">◆</span>
+                <div className="bg-metallic-gradient text-[#0D0B05] px-4 py-2 rounded-full font-display text-sm font-bold">
+                  RESULTADOS REAIS
+                </div>
               </div>
-            ))}
-          </div>
-          
-          {/* Texto de apoio */}
-          <div className="text-center mt-16">
-            <p className="text-[#DFC27A] text-xl max-w-4xl mx-auto leading-relaxed">
-              Empresas que transformaram suas operações e aumentaram significativamente a receita através de 
-              <span className="text-[#C8A75D] font-semibold"> estratégias avançadas de Customer Experience</span>
-            </p>
+              
+              <p className="text-[#DFC27A] text-xl leading-relaxed mb-8">
+                Empresas de diferentes segmentos que <span className="text-[#C8A75D] font-semibold">multiplicaram sua receita</span> 
+                através das metodologias exclusivas do <span className="text-metallic-gradient font-bold">Experience-Led Growth</span>.
+              </p>
+              
+              {/* Estatísticas impressionantes */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-[#0D0B05]/30 p-4 rounded-xl border border-[#C8A75D]/20">
+                  <div className="text-metallic-gradient font-display text-2xl font-bold">+150%</div>
+                  <p className="text-[#DFC27A] text-sm">Crescimento médio de receita</p>
+                </div>
+                <div className="bg-[#0D0B05]/30 p-4 rounded-xl border border-[#C8A75D]/20">
+                  <div className="text-metallic-gradient font-display text-2xl font-bold">ROI 3:1</div>
+                  <p className="text-[#DFC27A] text-sm">Retorno sobre investimento</p>
+                </div>
+                <div className="bg-[#0D0B05]/30 p-4 rounded-xl border border-[#C8A75D]/20">
+                  <div className="text-metallic-gradient font-display text-2xl font-bold">90 dias</div>
+                  <p className="text-[#DFC27A] text-sm">Tempo médio para resultados</p>
+                </div>
+              </div>
+              
+              <Button className="bg-metallic-gradient hover:opacity-90 text-[#0D0B05] px-10 py-4 font-display font-bold tracking-wider uppercase transition-all duration-300 hover:scale-105 text-lg">
+                <Award className="w-5 h-5 mr-2" />
+                Ver Casos Detalhados
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -325,13 +357,13 @@ export default function EventLandingPage() {
         </div>
       </section>
 
-      {/* Por Que Participar - Design Refinado */}
-      <section className="py-24">
+      {/* Materiais Exclusivos - Design Refinado */}
+      <section className="py-24 border-t border-[#604618]">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="font-display text-4xl text-metallic-gradient mb-12">
-                Por Que <span className="text-[#C8A75D]">◆</span> Participar
+                Materiais <span className="text-[#C8A75D]">◆</span> Exclusivos
               </h2>
               <div className="space-y-8">
                 <div className="flex items-start space-x-4">
@@ -339,10 +371,9 @@ export default function EventLandingPage() {
                     <TrendingUp className="h-6 w-6 text-[#0D0B05]" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-[#C8A75D] mb-2">Estratégias Comprovadas</h3>
+                    <h3 className="font-display text-xl text-[#C8A75D] mb-2">Slides ELG Premium</h3>
                     <p className="text-[#DFC27A] leading-relaxed">
-                      Aprenda metodologias testadas por empresas líderes de mercado para aumentar receita através da
-                      experiência do cliente.
+                      Acesso aos slides exclusivos do Método Experience-Led Growth utilizados durante a masterclass.
                     </p>
                   </div>
                 </div>
@@ -351,9 +382,9 @@ export default function EventLandingPage() {
                     <Users className="h-6 w-6 text-[#0D0B05]" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-[#C8A75D] mb-2">Networking Qualificado</h3>
+                    <h3 className="font-display text-xl text-[#C8A75D] mb-2">Workbook Resumido</h3>
                     <p className="text-[#DFC27A] leading-relaxed">
-                      Conecte-se com líderes e especialistas em CX de empresas de diversos segmentos.
+                      Guia prático em PDF com exercícios e frameworks para aplicação imediata em sua empresa.
                     </p>
                   </div>
                 </div>
@@ -362,9 +393,9 @@ export default function EventLandingPage() {
                     <Target className="h-6 w-6 text-[#0D0B05]" />
                   </div>
                   <div>
-                    <h3 className="font-display text-xl text-[#C8A75D] mb-2">Cases Práticos</h3>
+                    <h3 className="font-display text-xl text-[#C8A75D] mb-2">Guia de Próximas Ações</h3>
                     <p className="text-[#DFC27A] leading-relaxed">
-                      Conheça cases reais de transformação e os resultados obtidos pelas empresas.
+                      Roteiro estruturado com os próximos passos para implementar o método em sua organização.
                     </p>
                   </div>
                 </div>
@@ -374,82 +405,17 @@ export default function EventLandingPage() {
               <Card className="bg-gradient-to-br from-[#977640]/20 to-[#604618]/20 border-[#C8A75D]/50">
                 <CardContent className="p-8">
                   <Award className="w-12 h-12 text-[#C8A75D] mb-4" />
-                  <h3 className="font-display text-xl text-[#C8A75D] mb-2">Certificado Exclusivo</h3>
-                  <p className="text-[#DFC27A]">Receba certificado digital com selo de excelência em Customer Experience.</p>
+                  <h3 className="font-display text-xl text-[#C8A75D] mb-2">Acesso por 7 Dias</h3>
+                  <p className="text-[#DFC27A]">Replay exclusivo disponível por uma semana para revisão do conteúdo.</p>
                 </CardContent>
               </Card>
               <Card className="bg-gradient-to-br from-[#977640]/20 to-[#604618]/20 border-[#C8A75D]/50">
                 <CardContent className="p-8">
                   <Sparkles className="w-12 h-12 text-[#C8A75D] mb-4" />
-                  <h3 className="font-display text-xl text-[#C8A75D] mb-2">Material Premium</h3>
-                  <p className="text-[#DFC27A]">Acesso a conteúdos exclusivos e frameworks utilizados pelos palestrantes.</p>
+                  <h3 className="font-display text-xl text-[#C8A75D] mb-2">Comunidade VIP</h3>
+                  <p className="text-[#DFC27A]">Acesso exclusivo à comunidade de clientes Opens para networking contínuo.</p>
                 </CardContent>
               </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Speakers Section - Design Luxuoso */}
-      <section className="py-24 border-y border-[#604618]">
-        <div className="container mx-auto px-6">
-          <div className="text-center text-[#F5E8C8] mb-16">
-            <h2 className="font-display text-4xl text-metallic-gradient mb-4">
-              Palestrantes <span className="text-[#C8A75D]">◆</span> Painelistas
-            </h2>
-            <p className="text-[#DFC27A] text-lg">Especialistas renomados em Customer Experience</p>
-          </div>
-
-          {/* Main Speakers */}
-          <div className="mb-16">
-            <h3 className="font-display text-2xl text-[#C8A75D] text-center mb-12 tracking-wider">Palestrantes Principais</h3>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {[
-                { name: "Douglas Oliveira", role: "Diretor de CX", company: "TechCorp" },
-                { name: "Mariana Santos", role: "Head of Customer Success", company: "InnovaCorp" },
-              ].map((speaker, i) => (
-                <Card key={i} className="bg-gradient-to-br from-[#977640]/10 to-[#604618]/10 border-[#C8A75D]/30 overflow-hidden hover:border-[#C8A75D] transition-all">
-                  <CardContent className="p-8 text-center">
-                    <div className="relative mb-6">
-                      <div className="w-32 h-32 rounded-full mx-auto bg-gradient-to-br from-[#C8A75D] to-[#977640] p-1">
-                        <div className="w-full h-full rounded-full bg-[#0D0B05] flex items-center justify-center">
-                          <span className="font-display text-3xl text-[#C8A75D]">{speaker.name.charAt(0)}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <h4 className="font-display text-xl text-[#C8A75D] mb-2">{speaker.name}</h4>
-                    <p className="text-[#DFC27A] mb-1">{speaker.role}</p>
-                    <p className="text-[#977640] text-sm">{speaker.company}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Panelists */}
-          <div>
-            <h3 className="font-display text-2xl text-[#C8A75D] text-center mb-12 tracking-wider">Painelistas</h3>
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {[
-                { name: "Ana Carolina", role: "Customer Experience Manager", company: "RetailPlus" },
-                { name: "Roberto Silva", role: "VP of Customer Operations", company: "ServicePro" },
-                { name: "Juliana Costa", role: "CX Strategy Director", company: "DigitalFirst" },
-              ].map((panelist, i) => (
-                <Card key={i} className="bg-gradient-to-br from-[#977640]/10 to-[#604618]/10 border-[#C8A75D]/30 overflow-hidden hover:border-[#C8A75D] transition-all">
-                  <CardContent className="p-6 text-center">
-                    <div className="relative mb-4">
-                      <div className="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-[#C8A75D] to-[#977640] p-1">
-                        <div className="w-full h-full rounded-full bg-[#0D0B05] flex items-center justify-center">
-                          <span className="font-display text-2xl text-[#C8A75D]">{panelist.name.charAt(0)}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <h4 className="font-display text-lg text-[#C8A75D] mb-1">{panelist.name}</h4>
-                    <p className="text-[#DFC27A] text-sm mb-1">{panelist.role}</p>
-                    <p className="text-[#977640] text-xs">{panelist.company}</p>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
           </div>
         </div>
@@ -460,35 +426,35 @@ export default function EventLandingPage() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-display text-4xl text-metallic-gradient mb-4">
-              Programação <span className="text-[#C8A75D]">◆</span> Agenda
+              Próximas <span className="text-[#C8A75D]">◆</span> Sessões
             </h2>
-            <p className="text-[#DFC27A] text-lg">Uma jornada transformadora em Customer Experience</p>
+            <p className="text-[#DFC27A] text-lg">Sessões exclusivas de 60 minutos com Douglas Conrad</p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-8">
             {[
               {
-                time: "16h30",
-                title: "Transformando Experiência em Resultados",
+                time: "40min",
+                title: "Método Experience-Led Growth",
                 description:
-                  "Metodologias práticas para converter investimentos em CX em receita mensurável e sustentável.",
+                  "Masterclass exclusiva revelando as estratégias que convertem atendimento em receita previsível.",
               },
               {
-                time: "17h30",
-                title: "Como Construir uma Área de CX do Zero",
+                time: "20min",
+                title: "Q&A VIP Exclusivo",
                 description:
-                  "Estratégias para estruturar uma área de Customer Experience focada em geração de receita recorrente.",
+                  "Sessão interativa de perguntas e respostas para clientes selecionados aplicarem em seus negócios.",
               },
               {
-                time: "18h30",
-                title: "Do Backstage à Protagonista",
+                time: "7 dias",
+                title: "Replay + Guia de Ações",
                 description:
-                  "Cases de transformação onde CX se tornou protagonista estratégico nas empresas multinacionais.",
+                  "Acesso ao replay fechado por uma semana mais guia prático com próximos passos para implementação.",
               },
               {
-                time: "19h30",
-                title: "Encerramento & Networking",
-                description: "Momento exclusivo de conexões e troca de experiências entre os participantes.",
+                time: "Contínuo",
+                title: "Slides ELG + Workbook",
+                description: "Material premium com slides da masterclass e workbook resumido em PDF para aplicação prática.",
               },
             ].map((item, i) => (
               <div key={i} className="flex items-start space-x-6 group">
@@ -505,6 +471,102 @@ export default function EventLandingPage() {
         </div>
       </section>
 
+      {/* Seção Benefícios E.L.G.A. */}
+      <section className="py-24 border-t border-[#604618] relative overflow-hidden">
+        {/* Background decorativo */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 70% 50%, rgba(200, 167, 93, 0.3) 0%, transparent 50%)`,
+          }}></div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl lg:text-5xl text-metallic-gradient mb-8 text-shadow-luxury">
+              Benefícios que <span className="text-[#C8A75D]">◆</span> Brilham
+            </h2>
+            <div className="w-32 h-1 bg-metallic-gradient mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Mentoria Assinatura */}
+            <div className="bg-gradient-to-br from-[#977640]/10 to-[#604618]/10 p-8 rounded-xl border border-[#C8A75D]/30 hover:border-[#C8A75D] transition-all group">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="bg-metallic-gradient p-3 rounded">
+                  <Crown className="w-8 h-8 text-[#0D0B05]" />
+                </div>
+                <h3 className="font-display text-2xl text-[#C8A75D]">Mentoria Assinatura</h3>
+              </div>
+              <p className="text-[#DFC27A] leading-relaxed text-lg">
+                Receba <span className="text-[#C8A75D] font-semibold">insights inéditos direto da fonte</span> do 
+                Método Experience-Led Growth. Acesso exclusivo às estratégias mais avançadas do mercado.
+              </p>
+            </div>
+
+            {/* Aplicação Imediata */}
+            <div className="bg-gradient-to-br from-[#977640]/10 to-[#604618]/10 p-8 rounded-xl border border-[#C8A75D]/30 hover:border-[#C8A75D] transition-all group">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="bg-metallic-gradient p-3 rounded">
+                  <Zap className="w-8 h-8 text-[#0D0B05]" />
+                </div>
+                <h3 className="font-display text-2xl text-[#C8A75D]">Aplicação Imediata</h3>
+              </div>
+              <p className="text-[#DFC27A] leading-relaxed text-lg">
+                <span className="text-[#C8A75D] font-semibold">Ferramentas práticas</span> para ativar já no dia seguinte. 
+                Metodologias testadas que geram resultados mensuráveis em sua empresa.
+              </p>
+            </div>
+
+            {/* Networking Exclusivo */}
+            <div className="bg-gradient-to-br from-[#977640]/10 to-[#604618]/10 p-8 rounded-xl border border-[#C8A75D]/30 hover:border-[#C8A75D] transition-all group">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="bg-metallic-gradient p-3 rounded">
+                  <Users className="w-8 h-8 text-[#0D0B05]" />
+                </div>
+                <h3 className="font-display text-2xl text-[#C8A75D]">Networking Exclusivo</h3>
+              </div>
+              <p className="text-[#DFC27A] leading-relaxed text-lg">
+                <span className="text-[#C8A75D] font-semibold">Compartilhe conquistas e desafios</span> com pares de 
+                alto calibre. Conecte-se com líderes que transformam experiência em crescimento.
+              </p>
+            </div>
+          </div>
+
+          {/* Estrutura das Sessões */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-[#C8A75D]/10 to-[#977640]/10 p-8 rounded-xl border border-[#C8A75D]/30">
+              <h3 className="font-display text-3xl text-metallic-gradient text-center mb-8">Estrutura das Sessões</h3>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="text-center">
+                  <div className="bg-metallic-gradient text-[#0D0B05] px-6 py-3 rounded-full font-display text-2xl font-bold mb-4 inline-block">
+                    40 min
+                  </div>
+                  <h4 className="font-display text-xl text-[#C8A75D] mb-2">Masterclass</h4>
+                  <p className="text-[#DFC27A]">Conteúdo exclusivo com Douglas Conrad revelando estratégias avançadas</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="bg-metallic-gradient text-[#0D0B05] px-6 py-3 rounded-full font-display text-2xl font-bold mb-4 inline-block">
+                    20 min
+                  </div>
+                  <h4 className="font-display text-xl text-[#C8A75D] mb-2">Q&A VIP</h4>
+                  <p className="text-[#DFC27A]">Sessão exclusiva de perguntas e respostas para clientes selecionados</p>
+                </div>
+              </div>
+
+              <div className="mt-8 p-6 bg-[#0D0B05]/30 rounded-lg border-l-4 border-[#C8A75D] text-center">
+                <p className="text-[#F5E8C8] text-lg font-medium">
+                  <span className="font-display text-[#C8A75D]">Formato:</span> Live privada • 
+                  <span className="font-display text-[#C8A75D]"> Acesso:</span> Via landing page + confirmação • 
+                  <span className="font-display text-[#C8A75D]"> Follow-up:</span> Replay fechado por 7 dias
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA - Design Majestoso */}
       <section className="py-24 border-t border-[#604618]">
         <div className="container mx-auto px-6 text-center">
@@ -513,18 +575,18 @@ export default function EventLandingPage() {
               Prepare-se para <span className="text-metallic-gradient">◆</span> Transformar
             </h2>
             <div className="font-display text-5xl text-metallic-gradient text-shadow-luxury">
-              CX <span className="text-[#C8A75D]">◆</span> IN <span className="text-[#C8A75D]">◆</span> HOUSE
+              E<span className="text-[#C8A75D]">◆</span>L<span className="text-[#C8A75D]">◆</span>G<span className="text-[#C8A75D]">◆</span>A
             </div>
             <p className="text-[#DFC27A] text-lg leading-relaxed">
-              Um encontro exclusivo onde líderes visionários se conectam para transformar a Experiência do Cliente 
-              no verdadeiro centro de receita das empresas.
+              Hub de mentoria premium onde líderes visionários se conectam para transformar a experiência do cliente 
+              em legado de crescimento através do Método Experience-Led Growth.
             </p>
             <div className="pt-8">
               <Button
                 size="lg"
                 className="bg-metallic-gradient hover:opacity-90 text-[#0D0B05] px-12 py-6 text-lg font-bold tracking-wider uppercase transition-all duration-300 hover:scale-105"
               >
-                Reserve Seu Lugar
+                Confirme sua Participação
               </Button>
             </div>
           </div>
