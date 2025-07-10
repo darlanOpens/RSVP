@@ -11,8 +11,9 @@ RUN npm install -g pnpm
 FROM base AS deps
 WORKDIR /app
 
-# Copiar arquivos de manifesto de dependência
+# Copiar arquivos de manifesto de dependência e configuração
 COPY package.json pnpm-lock.yaml ./
+COPY tsconfig.json next.config.mjs ./
 
 # Instalar dependências de produção
 RUN pnpm install --prod
