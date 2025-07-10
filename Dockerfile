@@ -15,8 +15,8 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 COPY tsconfig.json next.config.mjs ./
 
-# Instalar dependências de produção
-RUN pnpm install --prod
+# Instalar todas as dependências (incluindo devDependencies para o build)
+RUN pnpm install
 
 # Estágio de build
 FROM base AS builder
