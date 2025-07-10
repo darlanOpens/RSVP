@@ -238,62 +238,49 @@ export default function EventLandingPage() {
           </div>
           
           {/* Grid Premium 4x2 */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 max-w-7xl mx-auto mb-16">
             {clientLogos.map((client, index) => (
-              <div 
-                key={client.name} 
-                className="group cursor-pointer transform transition-all duration-500 hover:scale-105"
-                style={{ 
-                  animationDelay: `${index * 0.15}s`,
-                  animation: `fadeInUp 0.8s ease-out forwards ${index * 0.15}s`
+              <div
+                key={client.name}
+                className="group cursor-pointer flex flex-col items-center text-center transition-transform duration-300 ease-in-out hover:-translate-y-2"
+                style={{
+                  animation: `fadeInUp 0.8s ease-out forwards ${index * 0.1}s`,
                 }}
               >
-                <div className="relative bg-gradient-to-br from-[#977640]/10 to-[#604618]/5 p-8 rounded-2xl border border-[#C8A75D]/20 hover:border-[#C8A75D]/60 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#C8A75D]/20 h-48 flex items-center justify-center">
-                  
-                  {/* Efeito de brilho no hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#C8A75D]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Container da logo */}
-                  <div className="relative z-10 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110 w-full h-32 flex items-center justify-center">
-                    <Image
-                      src={`/clientes_logo/${client.filename}`}
-                      alt={`Logo ${client.name}`}
-                      width={120}
-                      height={80}
-                      className="object-contain max-w-full max-h-full filter drop-shadow-md group-hover:drop-shadow-lg transition-all duration-500"
-                    />
-                  </div>
-                  
-                  {/* Badge de sucesso no hover */}
-                  <div className="absolute -top-3 -right-3 bg-metallic-gradient text-[#0D0B05] px-3 py-2 rounded-full font-display text-xs font-bold shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300 flex items-center gap-1">
-                    <Crown className="w-3 h-3" />
-                    SUCESSO
-                  </div>
-                  
-                  {/* Info overlay no hover */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                    <div className="bg-[#0D0B05]/95 backdrop-blur-sm rounded-lg p-3 border border-[#C8A75D]/40">
-                      <h3 className="font-display text-sm text-[#C8A75D] font-bold text-center mb-1">
-                        {client.name.toUpperCase()}
-                      </h3>
-                      <p className="text-[#DFC27A] text-xs text-center">
-                        Transformação Comprovada
-                      </p>
+                {/* Logo container */}
+                <div className="w-full relative transform transition-transform duration-300 group-hover:scale-105">
+                  <div className="relative bg-gradient-to-br from-[#977640]/10 to-[#604618]/5 p-1 rounded-2xl border border-[#C8A75D]/20 group-hover:border-[#C8A75D]/60 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#C8A75D]/20">
+                    <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg w-full h-40 overflow-hidden">
+                      <Image
+                        src={`/clientes_logo/${client.filename}`}
+                        alt={`Logo ${client.name}`}
+                        width={150}
+                        height={150}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
+                  </div>
+                </div>
+
+                {/* Text content */}
+                <div className="mt-4 w-full">
+                  <div className="bg-[#0D0B05]/50 backdrop-blur-sm rounded-lg p-3 border border-[#C8A75D]/30 group-hover:border-[#C8A75D]/50 transition-colors duration-300">
+                    <h3 className="font-display text-base text-[#C8A75D] font-bold text-center mb-1">
+                      {client.name.toUpperCase()}
+                    </h3>
+                    <p className="text-[#DFC2A] text-xs text-center">
+                      Transformação Comprovada
+                    </p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          
+
           {/* CTA Section Premium */}
           <div className="text-center max-w-5xl mx-auto">
             <div className="bg-gradient-to-br from-[#C8A75D]/10 to-[#977640]/5 p-10 rounded-3xl border border-[#C8A75D]/30 backdrop-blur-sm">
               <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="bg-metallic-gradient text-[#0D0B05] px-4 py-2 rounded-full font-display text-sm font-bold">
-                  8 EMPRESAS
-                </div>
-                <span className="text-[#C8A75D] text-2xl">◆</span>
                 <div className="bg-metallic-gradient text-[#0D0B05] px-4 py-2 rounded-full font-display text-sm font-bold">
                   RESULTADOS REAIS
                 </div>
@@ -324,34 +311,6 @@ export default function EventLandingPage() {
                 <Award className="w-5 h-5 mr-2" />
                 Ver Casos Detalhados
               </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Seção Apoiadores com Design Elegante */}
-      <section className="py-20 border-y border-[#604618]">
-        <div className="container mx-auto px-6">
-          <div className="text-center space-y-12">
-            <h2 className="font-display text-3xl text-metallic-gradient tracking-wider">
-              Apoiadores <span className="text-[#C8A75D]">◆</span> Parceiros
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-12 items-center">
-              {/* Logo ELGA destacada como organizadora */}
-              <div className="md:col-span-5 flex justify-center mb-8">
-                <div className="text-center">
-                  <ELGALogo size="lg" showTitle={true} />
-                </div>
-              </div>
-              
-              {/* Parceiros */}
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="flex justify-center opacity-60 hover:opacity-100 transition-opacity">
-                  <div className="w-32 h-16 bg-[#977640]/20 rounded flex items-center justify-center">
-                    <span className="text-[#C8A75D] font-display text-sm">PARCEIRO {i}</span>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
@@ -417,56 +376,6 @@ export default function EventLandingPage() {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Agenda Section - Design Elegante */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-metallic-gradient mb-4">
-              Próximas <span className="text-[#C8A75D]">◆</span> Sessões
-            </h2>
-            <p className="text-[#DFC27A] text-lg">Sessões exclusivas de 60 minutos com Douglas Conrad</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-8">
-            {[
-              {
-                time: "40min",
-                title: "Método Experience-Led Growth",
-                description:
-                  "Masterclass exclusiva revelando as estratégias que convertem atendimento em receita previsível.",
-              },
-              {
-                time: "20min",
-                title: "Q&A VIP Exclusivo",
-                description:
-                  "Sessão interativa de perguntas e respostas para clientes selecionados aplicarem em seus negócios.",
-              },
-              {
-                time: "7 dias",
-                title: "Replay + Guia de Ações",
-                description:
-                  "Acesso ao replay fechado por uma semana mais guia prático com próximos passos para implementação.",
-              },
-              {
-                time: "Contínuo",
-                title: "Slides ELG + Workbook",
-                description: "Material premium com slides da masterclass e workbook resumido em PDF para aplicação prática.",
-              },
-            ].map((item, i) => (
-              <div key={i} className="flex items-start space-x-6 group">
-                <div className="bg-metallic-gradient text-[#0D0B05] px-6 py-3 rounded font-display text-sm min-w-[100px] text-center">
-                  {item.time}
-                </div>
-                <div className="flex-1 border-l-2 border-[#604618] pl-6 group-hover:border-[#C8A75D] transition-colors">
-                  <h3 className="font-display text-xl text-[#C8A75D] mb-2">{item.title}</h3>
-                  <p className="text-[#DFC27A]">{item.description}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
