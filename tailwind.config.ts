@@ -20,63 +20,31 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        'sans': ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        'display': ['Plus Jakarta Sans', 'sans-serif'],
+        'sans': ['Inter', 'sans-serif'],
+        'display': ['Playfair Display', 'serif'],
       },
       colors: {
+        primary: {
+          DEFAULT: "#CF8F36",
+          dark: "#B3772B",
+          light: "#E4B654",
+        },
+        background: {
+          dark: "#030302",
+          light: "#C4B096",
+        },
+        surface: {
+          card: "#33271A",
+        },
+        'text-high': "#FFFFFF",
+        'text-muted': "#C4B096",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        purple: {
-          50: "#F4EFFF",
-          100: "#E4D5FF",
-          200: "#C4A9FE",
-          300: "#A37DF5",
-          400: "#8758EB",
-          500: "#6E39DC",
-          600: "#5425B7",
-          700: "#3B158E",
-          800: "#24096A",
-          900: "#140040",
-        },
-        pink: {
-          400: "#FF48D8",
-          500: "#FF48D8",
-          600: "#E63EC7",
-        },
       },
       borderRadius: {
-        lg: "var(--radius)",
+        lg: "0.5rem",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
