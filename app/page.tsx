@@ -50,7 +50,7 @@ export default function EventLandingPage() {
                 <h1 className="font-display text-5xl lg:text-7xl text-text-high font-bold tracking-wide uppercase leading-tight">
                   Transformando Atendimento em Receita
                 </h1>
-                <p className="font-sans text-2xl lg:text-3xl text-primary font-light">
+                <p className="font-sans text-1xl lg:text-2xl text-primary font-light">
                   Experience-Led Growth Academy
                 </p>
                 <p className="font-sans text-lg text-text-muted leading-relaxed mt-8">
