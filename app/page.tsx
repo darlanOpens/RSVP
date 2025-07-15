@@ -21,14 +21,7 @@ export default function EventLandingPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header com Logo ELGA */}
-      <header className="relative z-10 p-6">
-        <div className="container mx-auto">
-          <div className="flex justify-center">
-            <ELGALogo size="md" />
-          </div>
-        </div>
-      </header>
+      {/* Header removido */}
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
@@ -37,16 +30,19 @@ export default function EventLandingPage() {
           alt="Background"
           layout="fill"
           objectFit="cover"
-          className="absolute inset-0 z-0 opacity-30"
+          className="absolute inset-0 z-0"
         />
         <div className="relative z-10 container mx-auto px-6 py-20">
+          <div className="flex justify-center mb-12">
+            <ELGALogo size="md" />
+          </div>
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Lado Esquerdo: Conteúdo */}
             <div className="flex flex-col items-start text-left">
               <div className="mb-8">
                 <span className="inline-flex items-center gap-2 px-4 py-1 border border-primary text-primary text-sm font-semibold uppercase tracking-wider">
                   <Diamond className="w-4 h-4" />
-                  Evento Exclusivo
+                  Evento Exclusivo para convidados
                 </span>
               </div>
 
