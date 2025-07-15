@@ -32,7 +32,14 @@ export default function EventLandingPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="container mx-auto px-6 py-20">
+        <Image
+          src="/background.png"
+          alt="Background"
+          layout="fill"
+          objectFit="cover"
+          className="absolute inset-0 z-0 opacity-30"
+        />
+        <div className="relative z-10 container mx-auto px-6 py-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Lado Esquerdo: Conteúdo */}
             <div className="flex flex-col items-start text-left">
