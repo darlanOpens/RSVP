@@ -1,13 +1,21 @@
+"use client"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, MapPin, Users, TrendingUp, Target, Sparkles, Award, Diamond, Star, Crown, Zap } from "lucide-react"
+import { Calendar, Clock, MapPin, Users, TrendingUp, Target, Sparkles, Award, Diamond, Star, Crown, Zap, Loader2 } from "lucide-react"
 import Image from "next/image"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 export default function EventLandingPage() {
+  const router = useRouter()
+  const [email, setEmail] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  
   const clientLogos = [
     { name: "Studio Z", filename: "Estudio-Z.png", bgColor: "bg-gradient-to-br from-gray-800 to-black" },
     { name: "Estrela", filename: "Estrela.png", bgColor: "bg-gradient-to-br from-red-500 to-red-700" },
@@ -18,6 +26,33 @@ export default function EventLandingPage() {
     { name: "CustomerX", filename: "Customerx.png", bgColor: "bg-gradient-to-br from-purple-600 to-indigo-800" },
     { name: "Nextar", filename: "Nextar.png", bgColor: "bg-gradient-to-br from-rose-500 to-red-600" },
   ]
+
+  const handleSubmit = async () => {
+    setIsLoading(true)
+    try {
+      const response = await fetch("https://n8n.opens.com.br/webhook/hubspot-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ body: { email } }),
+      });
+
+      if (response.ok) {
+        // Supondo que uma resposta 200 (OK) signifique que o e-mail foi encontrado
+        router.push("/presenca-confirmada")
+      } else {
+        // Outros códigos de status (ex: 404) indicam que o e-mail não foi encontrado
+        router.push("/email-nao-encontrado")
+      }
+    } catch (error) {
+      console.error("Erro ao enviar o formulário:", error)
+      // Opcional: redirecionar para uma página de erro genérica ou mostrar uma mensagem
+      router.push("/email-nao-encontrado")
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,13 +98,18 @@ export default function EventLandingPage() {
                 <Input
                   type="email"
                   placeholder="Digite seu e-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
                   className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-14 px-6 text-lg focus:border-primary/80 focus:ring-primary/80"
                 />
                 <Button
                   size="lg"
+                  onClick={handleSubmit}
+                  disabled={isLoading}
                   className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-4 text-lg font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
                 >
-                  Confirme sua Presença
+                  {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Confirme sua Presença"}
                 </Button>
               </div>
 
@@ -369,9 +409,11 @@ export default function EventLandingPage() {
             <div className="pt-8">
               <Button
                 size="lg"
+                onClick={handleSubmit}
+                disabled={isLoading}
                 className="bg-primary hover:bg-primary-dark text-background-dark px-10 py-4 text-lg font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
               >
-                Confirme sua Participação
+                {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Confirme sua Participação"}
               </Button>
             </div>
           </div>
