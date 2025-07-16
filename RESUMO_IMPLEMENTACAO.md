@@ -21,7 +21,7 @@
 - **Localização**: Após seção do Douglas Conrad
 - **Grid**: 4 colunas (responsivo para 2 no mobile) - **AMPLIADO**
 - **8 Logos de clientes**: ✅ **FUNCIONANDO CORRETAMENTE**
-  - USEMINAS, Superlógica, SICOB, CustomerX
+  - USIMINAS, Superlógica, SICOB, CustomerX
   - Estrela, Studio Z, Havan, Nextar
 - **Tamanhos aumentados**: 
   - Imagens: 280x120px (era 140x60px) - **+100% MAIOR**
@@ -46,7 +46,7 @@ public/
 ├── douglas_conrad.png         (956KB) ✅
 ├── vintage-key.svg           (Criado) ✅
 ├── clientes_logo/            (Pasta) ✅
-│   ├── USEMINAS.png         (266KB) ✅
+│   ├── USIMINAS.png         (266KB) ✅
 │   ├── Superlogica.png      (266KB) ✅
 │   ├── SICOB.png            (254KB) ✅
 │   ├── Customerx.png        (183KB) ✅

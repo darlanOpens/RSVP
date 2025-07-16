@@ -146,7 +146,7 @@ Douglas Conrad é o mentor principal que conduz as sessões exclusivas, trazendo
 ### Empresas de Sucesso
 **8 empresas** já transformaram seus resultados:
 - Studio Z, Estrela, Havan, SICOB
-- Superlógica, USEMINAS, CustomerX, Nextar
+- Superlógica, USIMINAS, CustomerX, Nextar
 - Diferentes segmentos com resultados reais
 - Casos de sucesso comprovados
 

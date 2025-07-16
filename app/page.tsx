@@ -22,7 +22,7 @@ export default function EventLandingPage() {
     { name: "Havan", filename: "Havan.png", bgColor: "bg-gradient-to-br from-blue-600 to-blue-800" },
     { name: "SICOB", filename: "SICOB.png", bgColor: "bg-gradient-to-br from-emerald-500 to-green-700" },
     { name: "Superlógica", filename: "Superlogica.png", bgColor: "bg-gradient-to-br from-blue-500 to-blue-700" },
-    { name: "USEMINAS", filename: "USEMINAS.png", bgColor: "bg-gradient-to-br from-green-600 to-emerald-800" },
+    { name: "USIMINAS", filename: "USIMINAS.png", bgColor: "bg-gradient-to-br from-green-600 to-emerald-800" },
     { name: "CustomerX", filename: "Customerx.png", bgColor: "bg-gradient-to-br from-purple-600 to-indigo-800" },
     { name: "Nextar", filename: "Nextar.png", bgColor: "bg-gradient-to-br from-rose-500 to-red-600" },
   ]
