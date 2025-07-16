@@ -35,7 +35,11 @@ export default function EventLandingPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ body: { email } }),
+        body: JSON.stringify({
+          email: email,
+          form_title: "ELGA",
+          form_id: "ELGA",
+        }),
       });
 
       if (response.ok) {
