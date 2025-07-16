@@ -40,24 +40,18 @@ export default function EventLandingPage() {
           form_title: "ELGA",
           form_id: "ELGA",
         }),
-        redirect: 'manual', // Impede o redirecionamento automático para capturar a resposta
       });
 
-      if (response.status === 307) {
-        const location = response.headers.get('location');
-        if (location) {
-          // Redireciona para a URL fornecida pelo webhook
-          window.location.href = location;
-          return;
-        }
-      }
+      const data = await response.json();
 
-      // Se a resposta não for um redirecionamento, assume-se que o e-mail não foi encontrado
-      router.push("/email-nao-encontrado");
+      if (response.ok && data.success && data.redirectUrl) {
+        router.push(data.redirectUrl);
+      } else {
+        router.push("/email-nao-encontrado");
+      }
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error)
-      // Em caso de erro de rede, também redireciona para a página de falha
       router.push("/email-nao-encontrado")
     } finally {
       setIsLoading(false)
