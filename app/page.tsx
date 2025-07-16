@@ -45,7 +45,7 @@ export default function EventLandingPage() {
       const data = await response.json();
 
       if (response.ok && data.success && data.redirectUrl) {
-        router.push(data.redirectUrl);
+        window.location.href = data.redirectUrl;
       } else {
         router.push("/email-nao-encontrado");
       }
