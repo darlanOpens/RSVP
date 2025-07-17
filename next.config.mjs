@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: '/elga',
+  basePath: '/elga',
   eslint: {
     ignoreDuringBuilds: true,
   },
