@@ -47,12 +47,12 @@ export default function EventLandingPage() {
       if (response.ok && data.success && data.redirectUrl) {
         window.location.href = data.redirectUrl;
       } else {
-        router.push("/email-nao-encontrado");
+        router.push("elga/email-nao-encontrado");
       }
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error)
-      router.push("/email-nao-encontrado")
+      router.push("elga/email-nao-encontrado")
     } finally {
       setIsLoading(false)
     }
