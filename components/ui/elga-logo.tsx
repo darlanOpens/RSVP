@@ -43,7 +43,7 @@ export function ELGALogo({ size = 'md', className = '', showTitle = false }: ELG
         <p className="text-[#DFC27A] text-sm uppercase tracking-wide mb-4 text-center">Realização</p>
       )}
       <Image
-        src="/elga-logo.png"
+        src="/elga/elga-logo.png"
         alt="ELGA Logo"
         width={width}
         height={height}

@@ -65,7 +65,7 @@ export default function EventLandingPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <Image
-          src="/background.png"
+          src="/elga/background.png"
           alt="Background"
           layout="fill"
           objectFit="cover"
@@ -185,7 +185,7 @@ export default function EventLandingPage() {
               {/* Imagem */}
               <div className="relative z-20 w-full h-full">
                 <Image
-                  src="/douglas_conrad.png"
+                  src="/elga/douglas_conrad.png"
                   alt="Douglas Conrad"
                   layout="fill"
                   objectFit="contain"
