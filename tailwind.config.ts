@@ -43,6 +43,9 @@ const config: Config = {
         ring: "hsl(var(--ring))",
         foreground: "hsl(var(--foreground))",
       },
+      textShadow: {
+        'default': '0 2px 4px rgba(0, 0, 0, 0.5)',
+      },
       borderRadius: {
         lg: "0.5rem",
         md: "calc(var(--radius) - 2px)",
