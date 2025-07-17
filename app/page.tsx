@@ -222,7 +222,7 @@ export default function EventLandingPage() {
                   <div className="relative bg-surface-card/20 p-1 rounded-lg border border-primary/10 group-hover:border-primary/40 transition-all duration-150 ease-in-out">
                     <div className="bg-white/95 backdrop-blur-sm rounded-md shadow-lg w-full h-40 overflow-hidden">
                       <Image
-                        src={`/clientes_logo/${client.filename}`}
+                        src={`/elga/clientes_logo/${client.filename}`}
                         alt={`Logo ${client.name}`}
                         width={150}
                         height={150}
