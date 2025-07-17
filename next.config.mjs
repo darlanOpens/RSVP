@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/elga',
+  assetPrefix: '/elga',
+  output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
