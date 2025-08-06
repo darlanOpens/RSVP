@@ -73,54 +73,55 @@ export default function EventLandingPage() {
       {/* Header removido */}
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-screen">
         <Image
           src="/elga/background.png"
           alt="Background"
           layout="fill"
           objectFit="cover"
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 object-left md:object-right"
         />
-        <div className="relative z-10 container mx-auto px-6 py-12 md:py-16">
-          <div className="flex justify-center mb-8">
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="relative z-10 container mx-auto px-6 md:px-8 py-8 md:py-12 flex flex-col justify-center items-center text-center min-h-screen">
+          <div className="flex justify-center mb-6">
             <ELGALogo size="md" />
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full max-w-7xl">
             {/* Lado Esquerdo: Conteúdo */}
-            <div className="flex flex-col items-start text-left">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:col-span-6 w-full">
               <div className="mb-6">
-                <span className="inline-flex items-center gap-2 px-4 py-1 border border-primary text-primary text-sm font-semibold uppercase tracking-wider">
-                  <Diamond className="w-4 h-4" />
+                <span className="inline-flex items-center gap-2 px-3 py-1 border border-primary text-primary text-xs font-semibold uppercase tracking-wider">
+                  <Diamond className="w-3 h-3" />
                   Evento Exclusivo para convidados
                 </span>
               </div>
 
-              <div className="space-y-4 max-w-xl">
-                <h1 className="font-display text-4xl lg:text-6xl text-text-high font-bold tracking-wide uppercase leading-tight">
+              <div className="space-y-4 w-full">
+                <h1 className="font-display text-3xl md:text-4xl lg:text-4xl text-text-high font-bold tracking-wide uppercase leading-tight">
                   Transformando Atendimento em Receita
                 </h1>
-                <p className="font-sans text-xl lg:text-2xl text-primary font-light">
+                <p className="font-sans text-base lg:text-lg text-primary font-light">
                   Experience-Led Growth Academy
                 </p>
-                <p className="font-sans text-base text-text-muted leading-relaxed mt-4">
+                <p className="font-sans text-sm md:text-base text-text-muted leading-relaxed mt-4 max-w-lg mx-auto lg:mx-0">
                   Hub de mentoria premium da Opens. Conduzido por Douglas Conrad, criador do Método Experience-Led Growth, 
                   o programa reúne clientes selecionados em sessões exclusivas de 60 minutos ao vivo.
                 </p>
               </div>
 
-              <div className="mt-10 space-y-4 w-full max-w-md">
+              <div className="mt-10 space-y-4 w-full max-w-sm md:max-w-md">
                 {isEmailFromUrl ? (
-                  <div className="text-center bg-background/50 backdrop-blur-sm p-6 rounded-lg border border-primary/30">
-                    <p className="font-sans text-lg text-text-high mb-4">
-                      Olá, identificamos seu email como <strong className="text-primary">{email}</strong>
+                  <div className="text-center bg-background/50 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-primary/30">
+                    <p className="font-sans text-base md:text-lg text-text-high mb-4 break-words">
+                      Olá, identificamos seu email como <strong className="text-primary break-all">{email}</strong>
                     </p>
                     <Button
                       size="lg"
                       onClick={handleSubmit}
                       disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-4 text-lg font-semibold uppercase tracking-widest"
+                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-4 md:px-8 py-3 md:py-4 text-sm md:text-base font-semibold uppercase tracking-wide md:tracking-widest"
                     >
-                      {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Basta clicar aqui e confirmar"}
+                      {isLoading ? <Loader2 className="mr-2 h-4 w-4 md:h-6 md:w-6 animate-spin" /> : "Confirmar Presença"}
                     </Button>
                   </div>
                 ) : (
@@ -131,34 +132,34 @@ export default function EventLandingPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       disabled={isLoading}
-                      className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-14 px-6 text-lg focus:border-primary/80 focus:ring-primary/80"
+                      className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-12 md:h-14 px-4 md:px-6 text-base md:text-lg focus:border-primary/80 focus:ring-primary/80"
                     />
                     <Button
                       size="lg"
                       onClick={handleSubmit}
                       disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-4 text-lg font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
+                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-4 md:px-8 py-3 md:py-4 text-sm md:text-base font-semibold uppercase tracking-wide md:tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
                     >
-                      {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Confirme sua Presença"}
+                      {isLoading ? <Loader2 className="mr-2 h-4 w-4 md:h-6 md:w-6 animate-spin" /> : "Confirme sua Presença"}
                     </Button>
                   </>
                 )}
               </div>
 
-              <div className="mt-12 flex flex-wrap items-center gap-8 text-primary">
+              <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-primary">
                 <div className="flex items-center gap-2">
                   <Clock className="w-5 h-5" />
                   <span className="font-sans font-semibold">60 minutos</span>
                 </div>
-                <span className="text-primary/50">◆</span>
+                <span className="hidden md:inline text-primary/50">◆</span>
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  <span className="font-sans font-semibold">07 de Agosto, às 17h</span>
+                </div>
+                <span className="hidden md:inline text-primary/50">◆</span>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-5 h-5" />
-                  <span className="font-sans font-semibold">Online</span>
-                </div>
-                <span className="text-primary/50">◆</span>
-                <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5" />
-                  <span className="font-sans font-semibold">Exclusivo</span>
+                  <span className="font-sans font-semibold">Online no Zoom</span>
                 </div>
               </div>
             </div>
@@ -425,25 +426,25 @@ export default function EventLandingPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 border-t border-primary/20 bg-surface-card/20">
+      <section className="py-20 md:py-24 border-t border-primary/20 bg-surface-card/20">
         <div className="container mx-auto px-6 text-center">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <h2 className="font-display text-4xl text-primary font-bold tracking-wide uppercase">
+          <div className="max-w-3xl mx-auto space-y-6 md:space-y-8">
+            <h2 className="font-display text-3xl md:text-4xl text-primary font-bold tracking-wide uppercase">
               Prepare-se para Transformar
             </h2>
-            <div className="font-display text-6xl text-text-high font-bold tracking-wider">
+            <div className="font-display text-5xl md:text-6xl text-text-high font-bold tracking-wider">
               E.L.G.A.
             </div>
-            <p className="font-sans text-text-muted text-lg leading-relaxed">
+            <p className="font-sans text-base md:text-lg text-text-muted leading-relaxed">
               Hub de mentoria premium onde líderes visionários se conectam para transformar a experiência do cliente 
               em legado de crescimento através do Método Experience-Led Growth.
             </p>
-            <div className="pt-8">
+            <div className="pt-6 md:pt-8">
               <Button
                 size="lg"
                 onClick={handleSubmit}
                 disabled={isLoading}
-                className="bg-primary hover:bg-primary-dark text-background-dark px-10 py-4 text-lg font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
+                className="bg-primary hover:bg-primary-dark text-background-dark px-8 py-3 md:px-10 md:py-4 text-sm md:text-base font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
               >
                 {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Confirme sua Participação"}
               </Button>
