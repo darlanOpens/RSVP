@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,7 +11,8 @@ import Image from "next/image"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
-export default function EventLandingPage() {
+// Componente separado que usa useSearchParams
+function EventLandingPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [email, setEmail] = useState("")
@@ -453,5 +454,29 @@ export default function EventLandingPage() {
         </div>
       </section>
     </div>
+  )
+}
+
+// Componente de fallback para loading
+function EventLandingPageFallback() {
+  return (
+    <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="text-center">
+        <ELGALogo size="md" />
+        <div className="mt-8">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
+          <p className="mt-4 text-text-muted">Carregando...</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Componente principal exportado com Suspense
+export default function EventLandingPage() {
+  return (
+    <Suspense fallback={<EventLandingPageFallback />}>
+      <EventLandingPageContent />
+    </Suspense>
   )
 }
