@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,8 +13,18 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 export default function EventLandingPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isEmailFromUrl, setIsEmailFromUrl] = useState(false)
+
+  useEffect(() => {
+    const emailFromUrl = searchParams.get('emailconf')
+    if (emailFromUrl) {
+      setEmail(emailFromUrl)
+      setIsEmailFromUrl(true)
+    }
+  }, [searchParams])
   
   const clientLogos = [
     { name: "Studio Z", filename: "Estudio-Z.png", bgColor: "bg-gradient-to-br from-gray-800 to-black" },
@@ -71,53 +81,71 @@ export default function EventLandingPage() {
           objectFit="cover"
           className="absolute inset-0 z-0"
         />
-        <div className="relative z-10 container mx-auto px-6 py-20">
-          <div className="flex justify-center mb-12">
+        <div className="relative z-10 container mx-auto px-6 py-12 md:py-16">
+          <div className="flex justify-center mb-8">
             <ELGALogo size="md" />
           </div>
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Lado Esquerdo: Conteúdo */}
             <div className="flex flex-col items-start text-left">
-              <div className="mb-8">
+              <div className="mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-1 border border-primary text-primary text-sm font-semibold uppercase tracking-wider">
                   <Diamond className="w-4 h-4" />
                   Evento Exclusivo para convidados
                 </span>
               </div>
 
-              <div className="space-y-6 max-w-xl">
-                <h1 className="font-display text-5xl lg:text-7xl text-text-high font-bold tracking-wide uppercase leading-tight">
+              <div className="space-y-4 max-w-xl">
+                <h1 className="font-display text-4xl lg:text-6xl text-text-high font-bold tracking-wide uppercase leading-tight">
                   Transformando Atendimento em Receita
                 </h1>
-                <p className="font-sans text-1xl lg:text-2xl text-primary font-light">
+                <p className="font-sans text-xl lg:text-2xl text-primary font-light">
                   Experience-Led Growth Academy
                 </p>
-                <p className="font-sans text-lg text-text-muted leading-relaxed mt-8">
+                <p className="font-sans text-base text-text-muted leading-relaxed mt-4">
                   Hub de mentoria premium da Opens. Conduzido por Douglas Conrad, criador do Método Experience-Led Growth, 
                   o programa reúne clientes selecionados em sessões exclusivas de 60 minutos ao vivo.
                 </p>
               </div>
 
-              <div className="mt-12 space-y-4 w-full max-w-md">
-                <Input
-                  type="email"
-                  placeholder="Digite seu e-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  disabled={isLoading}
-                  className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-14 px-6 text-lg focus:border-primary/80 focus:ring-primary/80"
-                />
-                <Button
-                  size="lg"
-                  onClick={handleSubmit}
-                  disabled={isLoading}
-                  className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-4 text-lg font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
-                >
-                  {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Confirme sua Presença"}
-                </Button>
+              <div className="mt-10 space-y-4 w-full max-w-md">
+                {isEmailFromUrl ? (
+                  <div className="text-center bg-background/50 backdrop-blur-sm p-6 rounded-lg border border-primary/30">
+                    <p className="font-sans text-lg text-text-high mb-4">
+                      Olá, identificamos seu email como <strong className="text-primary">{email}</strong>
+                    </p>
+                    <Button
+                      size="lg"
+                      onClick={handleSubmit}
+                      disabled={isLoading}
+                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-4 text-lg font-semibold uppercase tracking-widest"
+                    >
+                      {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Basta clicar aqui e confirmar"}
+                    </Button>
+                  </div>
+                ) : (
+                  <>
+                    <Input
+                      type="email"
+                      placeholder="Digite seu e-mail"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      disabled={isLoading}
+                      className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-14 px-6 text-lg focus:border-primary/80 focus:ring-primary/80"
+                    />
+                    <Button
+                      size="lg"
+                      onClick={handleSubmit}
+                      disabled={isLoading}
+                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-4 text-lg font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
+                    >
+                      {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Confirme sua Presença"}
+                    </Button>
+                  </>
+                )}
               </div>
 
-              <div className="mt-16 flex flex-wrap items-center gap-8 text-primary">
+              <div className="mt-12 flex flex-wrap items-center gap-8 text-primary">
                 <div className="flex items-center gap-2">
                   <Clock className="w-5 h-5" />
                   <span className="font-sans font-semibold">60 minutos</span>
