@@ -83,98 +83,184 @@ function EventLandingPageContent() {
           className="absolute inset-0 z-0 object-left md:object-right"
         />
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                <div className="relative z-10 container mx-auto px-6 md:px-8 py-8 md:py-12 flex flex-col justify-center items-center text-center min-h-screen">
-          <div className="flex justify-center mb-6">
+        <div className="relative z-10 container mx-auto px-6 md:px-8 flex flex-col min-h-screen">
+          <div className="flex-shrink-0 flex justify-center pt-12 pb-6">
             <ELGALogo size="md" />
           </div>
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full max-w-7xl">
-            {/* Lado Esquerdo: Conteúdo */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:col-span-6 w-full">
-              <div className="mb-6">
-                <span className="inline-flex items-center gap-2 px-3 py-1 border border-primary text-primary text-xs font-semibold uppercase tracking-wider">
-                  <Diamond className="w-3 h-3" />
-                  Evento Exclusivo para convidados
-                </span>
-              </div>
-
-              <div className="space-y-4 w-full">
-                <h1 className="font-display text-3xl md:text-4xl lg:text-4xl text-text-high font-bold tracking-wide uppercase leading-tight">
-                  Transformando Atendimento em Receita
-                </h1>
-                <p className="font-sans text-base lg:text-lg text-primary font-light">
-                  Experience-Led Growth Academy
-                </p>
-                <p className="font-sans text-sm md:text-base text-text-muted leading-relaxed mt-4 max-w-lg mx-auto lg:mx-0">
-                  Hub de mentoria premium da Opens. Conduzido por Douglas Conrad, criador do Método Experience-Led Growth, 
-                  o programa reúne clientes selecionados em sessões exclusivas de 60 minutos ao vivo.
-                </p>
-              </div>
-
-              <div className="mt-10 space-y-4 w-full max-w-sm md:max-w-md">
-                {isEmailFromUrl ? (
-                  <div className="text-center bg-background/50 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-primary/30">
-                    <p className="font-sans text-base md:text-lg text-text-high mb-4 break-words">
-                      Olá, identificamos seu email como <strong className="text-primary break-all">{email}</strong>
-                    </p>
-                    <Button
-                      size="lg"
-                      onClick={handleSubmit}
-                      disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-4 md:px-8 py-3 md:py-4 text-sm md:text-base font-semibold uppercase tracking-wide md:tracking-widest"
-                    >
-                      {isLoading ? <Loader2 className="mr-2 h-4 w-4 md:h-6 md:w-6 animate-spin" /> : "Confirmar Presença"}
-                    </Button>
+          <div className="flex-grow flex items-center justify-center">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full max-w-7xl">
+              {/* Lado Esquerdo: Conteúdo */}
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:col-span-6 w-full">
+                <div className="mb-6">
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-primary">
+                    <div className="flex items-center gap-2 px-3 py-1 border border-primary rounded-full">
+                      <MapPin className="w-4 h-4" />
+                      <span className="font-sans text-sm font-semibold">Online</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-3 py-1 border border-primary rounded-full">
+                      <Clock className="w-4 h-4" />
+                      <span className="font-sans text-sm font-semibold">1h</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-3 py-1 border border-primary rounded-full">
+                      <span className="font-sans text-sm font-semibold">Google Meet</span>
+                    </div>
                   </div>
-                ) : (
-                  <>
-                    <Input
-                      type="email"
-                      placeholder="Digite seu e-mail"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      disabled={isLoading}
-                      className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-12 md:h-14 px-4 md:px-6 text-base md:text-lg focus:border-primary/80 focus:ring-primary/80"
-                    />
-                    <Button
-                      size="lg"
-                      onClick={handleSubmit}
-                      disabled={isLoading}
-                      className="w-full bg-primary hover:bg-primary-dark text-background-dark px-4 md:px-8 py-3 md:py-4 text-sm md:text-base font-semibold uppercase tracking-wide md:tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
-                    >
-                      {isLoading ? <Loader2 className="mr-2 h-4 w-4 md:h-6 md:w-6 animate-spin" /> : "Confirme sua Presença"}
-                    </Button>
-                  </>
-                )}
-              </div>
+                </div>
 
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-primary">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5" />
-                  <span className="font-sans font-semibold">60 minutos</span>
+                <div className="space-y-4 w-full">
+                  <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-text-high font-bold tracking-wide uppercase leading-tight">
+                    ELGA Talks
+                  </h1>
+                  <p className="font-sans text-base md:text-lg lg:text-xl text-text-muted leading-relaxed mt-4 max-w-2xl mx-auto lg:mx-0">
+                    Conversa ao vivo com o Douglas sobre a sua área de atendimento e como destravá-la — casos reais, papo interativo, sem slides.
+                  </p>
                 </div>
-                <span className="hidden md:inline text-primary/50">◆</span>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5" />
-                  <span className="font-sans font-semibold">07 de Agosto, às 17h</span>
+
+                <div className="mt-10 w-full max-w-2xl">
+                  {isEmailFromUrl ? (
+                    <div className="text-center bg-background/50 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-primary/30">
+                      <p className="font-sans text-base md:text-lg text-text-high mb-4 break-words">
+                        Olá, identificamos seu email como <strong className="text-primary break-all">{email}</strong>
+                      </p>
+                      <Button
+                        size="lg"
+                        onClick={handleSubmit}
+                        disabled={isLoading}
+                        className="w-full bg-primary hover:bg-primary-dark text-background-dark px-4 md:px-8 py-3 md:py-4 text-sm md:text-base font-semibold uppercase tracking-wide md:tracking-widest"
+                      >
+                        {isLoading ? <Loader2 className="mr-2 h-4 w-4 md:h-6 md:w-6 animate-spin" /> : "Confirmar Presença"}
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col sm:flex-row gap-4 p-1">
+                      <div className="flex-1 min-w-0">
+                        <Input
+                          type="email"
+                          placeholder="E-mail de acesso"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          disabled={isLoading}
+                          className="w-full font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-14 px-6 text-lg focus:border-primary/80 focus:ring-primary/80 rounded-lg"
+                        />
+                      </div>
+                      <div className="flex-shrink-0">
+                        <Button
+                          size="lg"
+                          onClick={handleSubmit}
+                          disabled={isLoading}
+                          className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-background-dark px-8 py-4 h-14 text-base font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg rounded-lg"
+                        >
+                          {isLoading ? (
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                          ) : (
+                            "Continuar"
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                  <p className="font-sans text-xs text-primary/70 text-center mt-3">
+                    vagas limitadas
+                  </p>
                 </div>
-                <span className="hidden md:inline text-primary/50">◆</span>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5" />
-                  <span className="font-sans font-semibold">Online no Zoom</span>
+
+                <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-primary">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5" />
+                    <span className="font-sans font-semibold">07 de Agosto, às 17h</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Lado Direito: Espaço reservado para imagem futura */}
-            <div className="hidden lg:block">
-              {/* Espaço para imagem */}
+              
+              {/* Lado Direito: Espaço reservado para imagem futura */}
+              <div className="hidden lg:block">
+                {/* Espaço para imagem */}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção Sobre o Mentor e E.L.G.A. */}
+      {/* Apelo Central */}
       <section className="py-24 border-t border-primary/20 bg-surface-card/20">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-4xl mx-auto space-y-8">
+            <h2 className="font-display text-4xl md:text-5xl text-text-high font-bold tracking-wide leading-tight">
+              Traga o ponto que hoje trava seu atendimento
+            </h2>
+            <p className="font-sans text-lg md:text-xl text-text-muted leading-relaxed">
+              Nessa conversa, o Douglas entra no tema com você, com exemplos do dia a dia e o que está funcionando agora no mercado.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* O que é */}
+      <section className="py-24 border-t border-primary/20 bg-background-dark">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-4xl mx-auto space-y-8">
+            <h2 className="font-display text-4xl text-text-high font-bold tracking-wide uppercase mb-12">
+              O que é
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center space-y-4">
+                <div className="bg-primary p-4 rounded-lg w-16 h-16 mx-auto flex items-center justify-center">
+                  <Users className="w-8 h-8 text-background-dark" />
+                </div>
+                <p className="font-sans text-text-muted text-lg">
+                  Bate-papo guiado pelo Douglas
+                </p>
+              </div>
+              <div className="text-center space-y-4">
+                <div className="bg-primary p-4 rounded-lg w-16 h-16 mx-auto flex items-center justify-center">
+                  <Target className="w-8 h-8 text-background-dark" />
+                </div>
+                <p className="font-sans text-text-muted text-lg">
+                  Casos reais dos participantes
+                </p>
+              </div>
+              <div className="text-center space-y-4">
+                <div className="bg-primary p-4 rounded-lg w-16 h-16 mx-auto flex items-center justify-center">
+                  <TrendingUp className="w-8 h-8 text-background-dark" />
+                </div>
+                <p className="font-sans text-text-muted text-lg">
+                  Resumo pós-evento para membros ELGA
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Para quem e Como funciona */}
+      <section className="py-24 border-t border-primary/20 bg-surface-card/20">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Para quem */}
+            <div className="text-center lg:text-left space-y-6">
+              <h3 className="font-display text-3xl text-text-high font-bold tracking-wide uppercase">
+                Para quem
+              </h3>
+              <p className="font-sans text-lg text-text-muted leading-relaxed">
+                Lideranças de Atendimento, CS e Vendas focadas em crescimento orientado por experiência.
+              </p>
+            </div>
+            
+            {/* Como funciona */}
+            <div className="text-center lg:text-left space-y-6">
+              <h3 className="font-display text-3xl text-text-high font-bold tracking-wide uppercase">
+                Como funciona
+              </h3>
+              <p className="font-sans text-lg text-text-muted leading-relaxed">
+                10′ abertura • 15′ o que funciona agora • 25′ hot seats • 15′ táticas • 5′ próximos passos
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Douglas Conrad */}
+      <section className="py-24 border-t border-primary/20 bg-background-dark">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Lado Esquerdo: Conteúdo */}
@@ -184,21 +270,23 @@ function EventLandingPageContent() {
                   Douglas Conrad
                 </h2>
                 <p className="font-sans text-xl text-primary font-semibold mb-2">
-                  Criador do Método Experience-Led Growth
+                  mentor do ELGA
                 </p>
                 <p className="font-sans text-lg text-text-muted">
-                  Mentor do G4 Educação
+                  Atua diariamente com operações de Atendimento e CX orientadas a receita
                 </p>
               </div>
-              <p className="font-sans text-text-muted leading-relaxed text-lg">
-                <strong className="text-primary">E.L.G.A.</strong> é o hub de mentoria premium da Opens. 
-                Conduzido por Douglas Conrad, o programa reúne clientes selecionados para revelar estratégias 
-                que convertem o atendimento em receita previsível — unindo tecnologia, processos e desenvolvimento humano.
-              </p>
+              <div className="space-y-4">
+                <p className="font-sans text-text-muted leading-relaxed text-lg">
+                  <strong className="text-primary">Estilo:</strong> ouvir primeiro, ir direto ao ponto, exemplos reais — sem slides.
+                </p>
+                <p className="font-sans text-text-muted leading-relaxed text-lg">
+                  <strong className="text-primary">Foco:</strong> transformar conversas em resultados mensuráveis: respostas mais rápidas, ofertas mais claras e passagens que fecham venda.
+                </p>
+              </div>
               <div className="inline-block bg-background-dark/30 p-6 rounded-lg border-l-4 border-primary">
                 <p className="font-sans text-text-high leading-relaxed font-medium max-w-2xl">
-                  "Participe e transforme sua experiência de cliente em 
-                  <span className="text-primary font-bold"> legado de crescimento</span>."
+                  "Conversa franca, exemplos do dia a dia e ajustes práticos para a sua realidade."
                 </p>
               </div>
             </div>
@@ -227,198 +315,50 @@ function EventLandingPageContent() {
         </div>
       </section>
 
-      {/* Seção Clientes de Sucesso */}
-      <section className="py-24 border-t border-primary/20 bg-background-dark">
-        <div className="container mx-auto px-6 relative">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl text-text-high font-bold tracking-wide uppercase leading-tight max-w-4xl mx-auto">
-              Empresas que Confiam e Transformam
-            </h2>
-            <p className="font-sans text-lg text-text-muted mt-4">
-              Conheça as metodologias que levaram sucesso a essas empresas.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 max-w-7xl mx-auto">
-            {clientLogos.map((client, index) => (
-              <div
-                key={client.name}
-                className="group cursor-pointer flex flex-col items-center text-center transition-transform duration-300 ease-in-out hover:-translate-y-2"
-                style={{
-                  animation: `fadeInUp 0.8s ease-out forwards ${index * 0.1}s`,
-                }}
-              >
-                <div className="w-full relative transform transition-transform duration-300 group-hover:scale-105">
-                  <div className="relative bg-surface-card/20 p-1 rounded-lg border border-primary/10 group-hover:border-primary/40 transition-all duration-150 ease-in-out">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-md shadow-lg w-full h-40 overflow-hidden">
-                      <Image
-                        src={`/elga/clientes_logo/${client.filename}`}
-                        alt={`Logo ${client.name}`}
-                        width={150}
-                        height={150}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 w-full">
-                  <h3 className="font-sans text-base text-primary font-semibold text-center uppercase tracking-wider">
-                    {client.name}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Materiais Exclusivos */}
+      {/* É Gratuito */}
       <section className="py-24 border-t border-primary/20 bg-surface-card/20">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-display text-4xl text-text-high font-bold tracking-wide uppercase mb-12">
-                Materiais Exclusivos
-              </h2>
-              <div className="space-y-8">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary p-3 rounded-lg">
-                    <TrendingUp className="h-6 w-6 text-background-dark" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl text-primary font-bold tracking-wide uppercase mb-2">Slides ELG Premium</h3>
-                    <p className="font-sans text-text-muted leading-relaxed">
-                      Acesso aos slides exclusivos do Método Experience-Led Growth utilizados durante a masterclass.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary p-3 rounded-lg">
-                    <Users className="h-6 w-6 text-background-dark" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl text-primary font-bold tracking-wide uppercase mb-2">Workbook Resumido</h3>
-                    <p className="font-sans text-text-muted leading-relaxed">
-                      Guia prático em PDF com exercícios e frameworks para aplicação imediata em sua empresa.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="bg-primary p-3 rounded-lg">
-                    <Target className="h-6 w-6 text-background-dark" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl text-primary font-bold tracking-wide uppercase mb-2">Guia de Próximas Ações</h3>
-                    <p className="font-sans text-text-muted leading-relaxed">
-                      Roteiro estruturado com os próximos passos para implementar o método em sua organização.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="text-center max-w-4xl mx-auto space-y-8">
+            <h2 className="font-display text-4xl text-text-high font-bold tracking-wide uppercase">
+              É Gratuito
+            </h2>
             <div className="space-y-6">
-              <Card className="bg-surface-card border-primary/20 p-4">
-                <CardContent className="p-0">
-                  <Award className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="font-display text-xl text-primary font-bold tracking-wide uppercase mb-2">Acesso por 7 Dias</h3>
-                  <p className="font-sans text-text-muted">Replay exclusivo disponível por uma semana para revisão do conteúdo.</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-surface-card border-primary/20 p-4">
-                <CardContent className="p-0">
-                  <Sparkles className="w-12 h-12 text-primary mb-4" />
-                  <h3 className="font-display text-xl text-primary font-bold tracking-wide uppercase mb-2">Comunidade VIP</h3>
-                  <p className="font-sans text-text-muted">Acesso exclusivo à comunidade de clientes Opens para networking contínuo.</p>
-                </CardContent>
-              </Card>
+              <div className="bg-background-dark/30 p-8 rounded-lg">
+                <p className="font-sans text-lg text-text-muted leading-relaxed mb-4">
+                  <strong className="text-primary">Sem custo.</strong> O ELGA Talks é uma iniciativa do ELGA para apoiar lideranças de atendimento.
+                </p>
+                <p className="font-sans text-lg text-text-muted leading-relaxed">
+                  <strong className="text-primary">Sem pitch.</strong> Durante a conversa não há oferta comercial — é foco em casos e prática.
+                </p>
+              </div>
+              <p className="font-sans text-base text-text-muted">
+                Se fizer sentido depois, você pode conhecer melhor o ELGA.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Seção Benefícios E.L.G.A. */}
+      {/* Urgência e Escassez */}
       <section className="py-24 border-t border-primary/20 bg-background-dark">
-        <div className="container mx-auto px-6 relative">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl lg:text-5xl text-text-high font-bold tracking-wide uppercase mb-8">
-              Benefícios que Brilham
-            </h2>
-            <div className="w-32 h-1 bg-primary mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Mentoria Assinatura */}
-            <div className="bg-surface-card/20 p-8 rounded-lg border border-primary/20 hover:border-primary transition-all group">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-primary p-3 rounded-lg">
-                  <Crown className="w-8 h-8 text-background-dark" />
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-4xl mx-auto space-y-8">
+            <div className="bg-primary/10 p-8 rounded-lg border border-primary/30">
+              <div className="space-y-4">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Clock className="w-6 h-6 text-primary" />
+                  <h3 className="font-display text-2xl text-primary font-bold tracking-wide uppercase">
+                    Vagas Limitadas
+                  </h3>
                 </div>
-                <h3 className="font-display text-2xl text-primary font-bold tracking-wide uppercase">Mentoria Assinatura</h3>
-              </div>
-              <p className="font-sans text-text-muted leading-relaxed text-lg">
-                Receba <span className="text-primary font-semibold">insights inéditos direto da fonte</span> do 
-                Método Experience-Led Growth. Acesso exclusivo às estratégias mais avançadas do mercado.
-              </p>
-            </div>
-
-            {/* Aplicação Imediata */}
-            <div className="bg-surface-card/20 p-8 rounded-lg border border-primary/20 hover:border-primary transition-all group">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-primary p-3 rounded-lg">
-                  <Zap className="w-8 h-8 text-background-dark" />
-                </div>
-                <h3 className="font-display text-2xl text-primary font-bold tracking-wide uppercase">Aplicação Imediata</h3>
-              </div>
-              <p className="font-sans text-text-muted leading-relaxed text-lg">
-                <span className="text-primary font-semibold">Ferramentas práticas</span> para ativar já no dia seguinte. 
-                Metodologias testadas que geram resultados mensuráveis em sua empresa.
-              </p>
-            </div>
-
-            {/* Networking Exclusivo */}
-            <div className="bg-surface-card/20 p-8 rounded-lg border border-primary/20 hover:border-primary transition-all group">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="bg-primary p-3 rounded-lg">
-                  <Users className="w-8 h-8 text-background-dark" />
-                </div>
-                <h3 className="font-display text-2xl text-primary font-bold tracking-wide uppercase">Networking Exclusivo</h3>
-              </div>
-              <p className="font-sans text-text-muted leading-relaxed text-lg">
-                <span className="text-primary font-semibold">Compartilhe conquistas e desafios</span> com pares de 
-                alto calibre. Conecte-se com líderes que transformam experiência em crescimento.
-              </p>
-            </div>
-          </div>
-
-          {/* Estrutura das Sessões */}
-          <div className="mt-20 max-w-4xl mx-auto">
-            <div className="bg-surface-card/20 p-8 rounded-lg border border-primary/20">
-              <h3 className="font-display text-3xl text-text-high font-bold tracking-wide uppercase text-center mb-8">Estrutura das Sessões</h3>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="bg-primary text-background-dark px-6 py-3 rounded-full font-display text-2xl font-bold mb-4 inline-block">
-                    40 min
-                  </div>
-                  <h4 className="font-display text-xl text-primary font-bold tracking-wide uppercase mb-2">Masterclass</h4>
-                  <p className="font-sans text-text-muted">Conteúdo exclusivo com Douglas Conrad revelando estratégias avançadas</p>
-                </div>
-                
-                <div className="text-center">
-                  <div className="bg-primary text-background-dark px-6 py-3 rounded-full font-display text-2xl font-bold mb-4 inline-block">
-                    20 min
-                  </div>
-                  <h4 className="font-display text-xl text-primary font-bold tracking-wide uppercase mb-2">Q&A VIP</h4>
-                  <p className="font-sans text-text-muted">Sessão exclusiva de perguntas e respostas para clientes selecionados</p>
-                </div>
-              </div>
-
-              <div className="mt-8 p-6 bg-background-dark/30 rounded-lg border-l-4 border-primary text-center">
-                <p className="font-sans text-text-high text-lg font-medium">
-                  <span className="font-display text-primary">Formato:</span> Live privada • 
-                  <span className="font-display text-primary"> Acesso:</span> Via landing page + confirmação • 
-                  <span className="font-display text-primary"> Follow-up:</span> Replay fechado por 7 dias
+                <p className="font-sans text-lg text-text-muted leading-relaxed">
+                  Capacidade da sala limitada. Assim que preencher, encerramos as confirmações desta edição.
+                </p>
+                <p className="font-sans text-base text-text-muted leading-relaxed">
+                  Confirme seu interesse agora para receber o link do encontro.
+                </p>
+                <p className="font-sans text-sm text-text-muted/80 leading-relaxed">
+                  Se as vagas desta edição se esgotarem, você será avisado sobre a próxima sessão ou poderá receber o resumo.
                 </p>
               </div>
             </div>
@@ -430,15 +370,12 @@ function EventLandingPageContent() {
       <section className="py-20 md:py-24 border-t border-primary/20 bg-surface-card/20">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-3xl mx-auto space-y-6 md:space-y-8">
-            <h2 className="font-display text-3xl md:text-4xl text-primary font-bold tracking-wide uppercase">
-              Prepare-se para Transformar
+            <h2 className="font-display text-4xl md:text-5xl text-text-high font-bold tracking-wide uppercase leading-tight">
+              ELGA Talks
             </h2>
-            <div className="font-display text-5xl md:text-6xl text-text-high font-bold tracking-wider">
-              E.L.G.A.
-            </div>
             <p className="font-sans text-base md:text-lg text-text-muted leading-relaxed">
-              Hub de mentoria premium onde líderes visionários se conectam para transformar a experiência do cliente 
-              em legado de crescimento através do Método Experience-Led Growth.
+              Traga seu desafio de atendimento. Vamos conversar sobre o que funciona agora no mercado — 
+              sem slides, sem buzzword, só prática.
             </p>
             <div className="pt-6 md:pt-8">
               <Button
@@ -447,7 +384,7 @@ function EventLandingPageContent() {
                 disabled={isLoading}
                 className="bg-primary hover:bg-primary-dark text-background-dark px-8 py-3 md:px-10 md:py-4 text-sm md:text-base font-semibold uppercase tracking-widest transition-all duration-150 ease-in-out hover:scale-105 shadow-lg"
               >
-                {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Confirme sua Participação"}
+                {isLoading ? <Loader2 className="mr-2 h-6 w-6 animate-spin" /> : "Continuar para confirmação"}
               </Button>
             </div>
           </div>
