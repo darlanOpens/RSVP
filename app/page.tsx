@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, MapPin, Users, TrendingUp, Target, Sparkles, Award, Diamond, Star, Crown, Zap, Loader2 } from "lucide-react"
+import { NEXT_MEETING_LABEL } from "@/components/ui/next-meeting"
 import Image from "next/image"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
@@ -69,6 +70,9 @@ function EventLandingPageContent() {
     }
   }
 
+  // Data/hora do próximo encontro (vinda do componente utilitário)
+  const nextMeetingLabel = NEXT_MEETING_LABEL
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header removido */}
@@ -84,13 +88,13 @@ function EventLandingPageContent() {
         />
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
         <div className="relative z-10 container mx-auto px-6 md:px-8 flex flex-col min-h-screen">
-          <div className="flex-shrink-0 flex justify-center pt-12 pb-6">
-            <ELGALogo size="md" />
-          </div>
           <div className="flex-grow flex items-center justify-center">
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full max-w-7xl">
               {/* Lado Esquerdo: Conteúdo */}
               <div className="flex flex-col items-center lg:items-start text-center lg:text-left lg:col-span-6 w-full">
+                <div className="mb-6">
+                  <ELGALogo size="md" />
+                </div>
                 <div className="mb-6">
                   <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-primary">
                     <div className="flex items-center gap-2 px-3 py-1 border border-primary rounded-full">
@@ -105,14 +109,17 @@ function EventLandingPageContent() {
                       <span className="font-sans text-sm font-semibold">Google Meet</span>
                     </div>
                   </div>
+                  <div className="mt-3 flex items-center justify-center lg:justify-start gap-2 text-primary">
+                    <Calendar className="w-5 h-5" />
+                    <span className="font-sans text-base md:text-lg font-semibold">
+                      próximo encontro: {nextMeetingLabel}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="space-y-4 w-full">
-                  <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-text-high font-bold tracking-wide uppercase leading-tight">
-                    ELGA Talks
-                  </h1>
                   <p className="font-sans text-base md:text-lg lg:text-xl text-text-muted leading-relaxed mt-4 max-w-2xl mx-auto lg:mx-0">
-                    Conversa ao vivo com o Douglas sobre a sua área de atendimento e como destravá-la — casos reais, papo interativo, sem slides.
+                    Bate papo ao vivo com Douglas Conrad, Criador do método ELG, e diversos especialistas do mercado, sobre a sua área de atendimento e como destravá-la — casos reais, papo interativo, personalizado.
                   </p>
                 </div>
 
@@ -164,12 +171,7 @@ function EventLandingPageContent() {
                   </p>
                 </div>
 
-                <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 text-primary">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5" />
-                    <span className="font-sans font-semibold">07 de Agosto, às 17h</span>
-                  </div>
-                </div>
+                {/* Data movida para os chips do topo usando NextMeeting */}
               </div>
               
               {/* Lado Direito: Espaço reservado para imagem futura */}
@@ -189,7 +191,7 @@ function EventLandingPageContent() {
               Traga o ponto que hoje trava seu atendimento
             </h2>
             <p className="font-sans text-lg md:text-xl text-text-muted leading-relaxed">
-              Nessa conversa, o Douglas entra no tema com você, com exemplos do dia a dia e o que está funcionando agora no mercado.
+              Nessa conversa, diversos especialistas em Experience-led Growth do mercado entram no tema com você, com exemplos do dia a dia e o que está funcionando agora no mercado.
             </p>
           </div>
         </div>
@@ -208,7 +210,7 @@ function EventLandingPageContent() {
                   <Users className="w-8 h-8 text-background-dark" />
                 </div>
                 <p className="font-sans text-text-muted text-lg">
-                  Bate-papo guiado pelo Douglas
+                  Bate-papo guiado por Douglas Conrad
                 </p>
               </div>
               <div className="text-center space-y-4">
@@ -259,31 +261,39 @@ function EventLandingPageContent() {
         </div>
       </section>
 
-      {/* Seção Douglas Conrad */}
+      {/* Quem conduz */}
       <section className="py-24 border-t border-primary/20 bg-background-dark">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Lado Esquerdo: Conteúdo */}
             <div className="text-left space-y-8">
               <div>
-                <h2 className="font-display text-5xl text-text-high font-bold tracking-wide uppercase leading-tight mb-4">
-                  Douglas Conrad
+                <h2 className="font-display text-4xl md:text-5xl text-text-high font-bold tracking-wide leading-tight mb-4">
+                  Quem conduz
                 </h2>
-                <p className="font-sans text-xl text-primary font-semibold mb-2">
-                  mentor do ELGA
-                </p>
                 <p className="font-sans text-lg text-text-muted">
-                  Atua diariamente com operações de Atendimento e CX orientadas a receita
+                  Bate-papo ao vivo com <strong className="text-primary">Douglas Conrad</strong>, criador do método ELG, com participação de <strong className="text-primary">especialistas convidados</strong> do mercado.
                 </p>
               </div>
-              <div className="space-y-4">
-                <p className="font-sans text-text-muted leading-relaxed text-lg">
-                  <strong className="text-primary">Estilo:</strong> ouvir primeiro, ir direto ao ponto, exemplos reais — sem slides.
-                </p>
-                <p className="font-sans text-text-muted leading-relaxed text-lg">
-                  <strong className="text-primary">Foco:</strong> transformar conversas em resultados mensuráveis: respostas mais rápidas, ofertas mais claras e passagens que fecham venda.
-                </p>
+
+              <div className="grid sm:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <h3 className="font-display text-2xl text-primary font-bold tracking-wide">Douglas Conrad</h3>
+                  <p className="font-sans text-text-muted">Mentor do ELGA. Atua diariamente com operações de Atendimento e CX orientadas a receita.</p>
+                  <p className="font-sans text-text-muted"><strong className="text-primary">Estilo:</strong> ouvir primeiro, ir direto ao ponto, exemplos reais — sem slides.</p>
+                  <p className="font-sans text-text-muted"><strong className="text-primary">Foco:</strong> transformar conversas em resultados mensuráveis: respostas mais rápidas, ofertas mais claras e passagens que fecham venda.</p>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-display text-2xl text-primary font-bold tracking-wide">Especialistas convidados</h3>
+                  <ul className="font-sans text-text-muted space-y-2">
+                    <li className="flex items-start gap-2"><Users className="w-5 h-5 text-primary mt-0.5" /><span>Executivos de CX, CS, Operações e Vendas com prática de campo.</span></li>
+                    <li className="flex items-start gap-2"><Sparkles className="w-5 h-5 text-primary mt-0.5" /><span>Convidados variam por edição, conforme os temas trazidos.</span></li>
+                    <li className="flex items-start gap-2"><TrendingUp className="w-5 h-5 text-primary mt-0.5" /><span>Discussão focada no que funciona agora no mercado.</span></li>
+                  </ul>
+                </div>
               </div>
+
               <div className="inline-block bg-background-dark/30 p-6 rounded-lg border-l-4 border-primary">
                 <p className="font-sans text-text-high leading-relaxed font-medium max-w-2xl">
                   "Conversa franca, exemplos do dia a dia e ajustes práticos para a sua realidade."
