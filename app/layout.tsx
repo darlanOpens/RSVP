@@ -4,6 +4,7 @@ import './globals.css'
 import { TwentyFirstToolbar } from '@21st-extension/toolbar-next'
 import { ReactPlugin } from '@21st-extension/react'
 import { cn } from '@/lib/utils'
+import GTMProvider from '@/components/gtm-provider'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable, fontDisplay.variable)}>
+        <GTMProvider />
         {children}
         <TwentyFirstToolbar config={{ plugins: [ReactPlugin] }} />
       </body>
