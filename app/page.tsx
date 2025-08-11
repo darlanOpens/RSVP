@@ -119,7 +119,7 @@ function EventLandingPageContent() {
 
                 <div className="space-y-4 w-full">
                   <p className="font-sans text-base md:text-lg lg:text-xl text-text-muted leading-relaxed mt-4 max-w-2xl mx-auto lg:mx-0">
-                    Bate papo ao vivo com Douglas Conrad, Criador do método ELG, e diversos especialistas do mercado, sobre a sua área de atendimento e como destravá-la — casos reais, papo interativo, personalizado.
+                    Bate papo ao vivo com Douglas Conrad, Criador do método ELG, e diversos especialistas do mercado, sobre a sua área de atendimento e como destravá-la — casos reais, papo interativo, personalizado para você.
                   </p>
                 </div>
 
@@ -188,7 +188,7 @@ function EventLandingPageContent() {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto space-y-8">
             <h2 className="font-display text-4xl md:text-5xl text-text-high font-bold tracking-wide leading-tight">
-              Traga o ponto que hoje trava seu atendimento
+              Traga os desafios que hoje travam seu atendimento
             </h2>
             <p className="font-sans text-lg md:text-xl text-text-muted leading-relaxed">
               Nessa conversa, diversos especialistas em Experience-led Growth do mercado entram no tema com você, com exemplos do dia a dia e o que está funcionando agora no mercado.
@@ -234,27 +234,73 @@ function EventLandingPageContent() {
         </div>
       </section>
 
-      {/* Para quem e Como funciona */}
-      <section className="py-24 border-t border-primary/20 bg-surface-card/20">
+      {/* Seção 'Para quem' removida por solicitação */}
+
+      {/* Como funciona (seção dedicada) */}
+      <section className="py-24 border-t border-primary/20 bg-background-dark">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Para quem */}
-            <div className="text-center lg:text-left space-y-6">
-              <h3 className="font-display text-3xl text-text-high font-bold tracking-wide uppercase">
-                Para quem
-              </h3>
-              <p className="font-sans text-lg text-text-muted leading-relaxed">
-                Lideranças de Atendimento, CS e Vendas focadas em crescimento orientado por experiência.
-              </p>
+          <div className="text-center max-w-5xl mx-auto">
+            <h2 className="font-display text-4xl md:text-5xl text-text-high font-bold tracking-wide mb-12">
+              Como funciona
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-5 gap-6 max-w-6xl mx-auto">
+            <div
+              className="bg-surface-card/20 p-6 rounded-lg border border-primary/20 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60"
+              style={{ animation: `fadeInUp 0.6s ease-out 0s forwards` }}
+            >
+              <div className="bg-primary text-background-dark px-4 py-1.5 rounded-full font-sans font-semibold tracking-wide text-sm md:text-base inline-block mb-3">
+                10′
+              </div>
+              <div className="font-display text-xl text-text-high">Abertura</div>
+              <p className="font-sans text-sm text-text-muted mt-2">Boas-vindas e alinhamento rápido do encontro.</p>
             </div>
-            
-            {/* Como funciona */}
-            <div className="text-center lg:text-left space-y-6">
-              <h3 className="font-display text-3xl text-text-high font-bold tracking-wide uppercase">
-                Como funciona
-              </h3>
-              <p className="font-sans text-lg text-text-muted leading-relaxed">
-                10′ abertura • 15′ o que funciona agora • 25′ hot seats • 15′ táticas • 5′ próximos passos
+            <div
+              className="bg-surface-card/20 p-6 rounded-lg border border-primary/20 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60"
+              style={{ animation: `fadeInUp 0.6s ease-out 0.05s forwards` }}
+            >
+              <div className="bg-primary text-background-dark px-4 py-1.5 rounded-full font-sans font-semibold tracking-wide text-sm md:text-base inline-block mb-3">
+                15′
+              </div>
+              <div className="font-display text-xl text-text-high">O que funciona agora</div>
+              <p className="font-sans text-sm text-text-muted mt-2">Panorama do que está performando no mercado.</p>
+            </div>
+            <div
+              className="p-6 rounded-lg border border-primary/60 text-center bg-primary/10 ring-1 ring-primary shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+              style={{ animation: `fadeInUp 0.6s ease-out 0.1s forwards` }}
+            >
+              <div className="bg-primary text-background-dark px-4 py-1.5 rounded-full font-sans font-semibold tracking-wide text-sm md:text-base inline-block mb-3">
+                25′
+              </div>
+              <div className="font-display text-2xl text-text-high">Hot seats</div>
+              <p className="font-sans text-sm text-text-muted mt-2">Participantes trazem casos ao vivo para diagnóstico e ajustes práticos.</p>
+            </div>
+            <div
+              className="bg-surface-card/20 p-6 rounded-lg border border-primary/20 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60"
+              style={{ animation: `fadeInUp 0.6s ease-out 0.15s forwards` }}
+            >
+              <div className="bg-primary text-background-dark px-4 py-1.5 rounded-full font-sans font-semibold tracking-wide text-sm md:text-base inline-block mb-3">
+                15′
+              </div>
+              <div className="font-display text-xl text-text-high">Táticas</div>
+              <p className="font-sans text-sm text-text-muted mt-2">Checklist prático para testar imediatamente.</p>
+            </div>
+            <div
+              className="bg-surface-card/20 p-6 rounded-lg border border-primary/20 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60"
+              style={{ animation: `fadeInUp 0.6s ease-out 0.2s forwards` }}
+            >
+              <div className="bg-primary text-background-dark px-4 py-1.5 rounded-full font-sans font-semibold tracking-wide text-sm md:text-base inline-block mb-3">
+                5′
+              </div>
+              <div className="font-display text-xl text-text-high">Próximos passos</div>
+              <p className="font-sans text-sm text-text-muted mt-2">Resumo e direcionamentos para depois do encontro.</p>
+            </div>
+          </div>
+
+          <div className="mt-10 max-w-4xl mx-auto">
+            <div className="p-6 rounded-lg border-l-4 border-primary bg-background-dark/40">
+              <p className="font-sans text-text-high text-lg">
+                <span className="text-primary font-bold">Hot seats</span> são o coração do encontro: 2–3 casos no centro da conversa, com orientação direta e exemplos do que funciona agora.
               </p>
             </div>
           </div>
