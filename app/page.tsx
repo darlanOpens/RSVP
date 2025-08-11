@@ -109,9 +109,9 @@ function EventLandingPageContent() {
                       <span className="font-sans text-sm font-semibold">Google Meet</span>
                     </div>
                   </div>
-                  <div className="mt-3 flex items-center justify-center lg:justify-start gap-2 text-primary">
-                    <Calendar className="w-5 h-5" />
-                    <span className="font-sans text-base md:text-lg font-semibold">
+                  <div className="mt-3 flex items-start justify-center lg:justify-start gap-2 text-primary">
+                    <Calendar className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <span className="font-sans text-base md:text-lg font-semibold leading-tight">
                       próximo encontro: {nextMeetingLabel}
                     </span>
                   </div>
