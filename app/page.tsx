@@ -12,6 +12,7 @@ import Image from "next/image"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { sendToWebhook } from "@/lib/webhook-config"
+import { savePreSelecaoEmail, savePreSelecaoWebhookUrl } from "@/lib/client-storage"
 
 // Componente separado que usa useSearchParams
 function EventLandingPageContent() {
@@ -52,25 +53,19 @@ function EventLandingPageContent() {
       if (response.ok && data.redirectUrl) {
         // Sempre que vier webhook_url, armazenamos antes de redirecionar
         if (data.webhook_url) {
-          sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url)
+          savePreSelecaoWebhookUrl(data.webhook_url)
         }
         // Se o destino for a pré-seleção, persistir o email para pré-preenchimento
-        try {
-          if (typeof window !== 'undefined' && data.redirectUrl.includes('/pre-selecao')) {
-            localStorage.setItem('preSelecaoEmail', email)
-          }
-        } catch {}
+        if (data.redirectUrl.includes('/pre-selecao')) {
+          savePreSelecaoEmail(email)
+        }
         window.location.href = data.redirectUrl
       } else {
         if (data.webhook_url) {
-          sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url)
+          savePreSelecaoWebhookUrl(data.webhook_url)
         }
         // Guardar email para pré-preenchimento na pré-seleção
-        try {
-          if (typeof window !== 'undefined') {
-            localStorage.setItem('preSelecaoEmail', email)
-          }
-        } catch {}
+        savePreSelecaoEmail(email)
         router.push("/pre-selecao")
       }
 
