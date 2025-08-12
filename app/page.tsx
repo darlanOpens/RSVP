@@ -11,6 +11,7 @@ import { NEXT_MEETING_LABEL } from "@/components/ui/next-meeting"
 import Image from "next/image"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { sendToWebhook } from "@/lib/webhook-config"
 
 // Componente separado que usa useSearchParams
 function EventLandingPageContent() {
@@ -42,16 +43,8 @@ function EventLandingPageContent() {
   const handleSubmit = async () => {
     setIsLoading(true)
     try {
-      const response = await fetch("https://n8n.opens.com.br/webhook/hubspot-form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          form_title: "ELGA",
-          form_id: "ELGA",
-        }),
+      const response = await sendToWebhook("RSVP", {
+        email: email,
       });
 
       const data = await response.json();
