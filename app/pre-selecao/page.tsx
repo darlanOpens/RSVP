@@ -44,13 +44,14 @@ export default function PreSelecaoPage() {
       let response: Response
 
       if (webhookUrl) {
-        // Usar a webhook_url específica do Wait node
-        response = await fetch(webhookUrl, {
+        // Usar um proxy server-side para evitar CORS ao chamar a resumeUrl do n8n
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+        response = await fetch(`${basePath}/api/wait-resume`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({ resumeUrl: webhookUrl, payload: formData }),
         })
         // Limpar o webhook_url usado
         sessionStorage.removeItem('preSelecaoWebhookUrl')
