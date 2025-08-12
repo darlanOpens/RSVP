@@ -54,11 +54,23 @@ function EventLandingPageContent() {
         if (data.webhook_url) {
           sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url)
         }
+        // Se o destino for a pré-seleção, persistir o email para pré-preenchimento
+        try {
+          if (typeof window !== 'undefined' && data.redirectUrl.includes('/pre-selecao')) {
+            localStorage.setItem('preSelecaoEmail', email)
+          }
+        } catch {}
         window.location.href = data.redirectUrl
       } else {
         if (data.webhook_url) {
           sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url)
         }
+        // Guardar email para pré-preenchimento na pré-seleção
+        try {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('preSelecaoEmail', email)
+          }
+        } catch {}
         router.push("/pre-selecao")
       }
 

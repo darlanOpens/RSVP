@@ -29,13 +29,40 @@ export default function PreSelecaoPage() {
     if (savedWebhookUrl) {
       setWebhookUrl(savedWebhookUrl)
     }
+    // Pré-preencher email salvo a partir do primeiro formulário
+    try {
+      const savedEmail = localStorage.getItem('preSelecaoEmail')
+      if (savedEmail) {
+        setFormData(prev => ({ ...prev, email: savedEmail }))
+      }
+    } catch {}
   }, [])
 
   const handleInputChange = (id: string, value: string) => {
+    // Aplica máscara de telefone quando o campo for `phone`
+    if (id === 'phone') {
+      value = maskPhone(value)
+    }
     setFormData(prev => ({
       ...prev,
       [id]: value
     }))
+  }
+
+  function maskPhone(value: string): string {
+    const digits = value.replace(/\D/g, '').slice(0, 11)
+    if (digits.length <= 10) {
+      // (XX) XXXX-XXXX
+      return digits
+        .replace(/(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{4})(\d)/, '$1-$2')
+        .replace(/(-\d{4})\d+?$/, '$1')
+    }
+    // (XX) 9XXXX-XXXX
+    return digits
+      .replace(/(\d{2})(\d)/, '($1) $2')
+      .replace(/(\d{5})(\d)/, '$1-$2')
+      .replace(/(-\d{4})\d+?$/, '$1')
   }
 
   const handleSubmit = async () => {
@@ -62,18 +89,12 @@ export default function PreSelecaoPage() {
 
       const data = await response.json()
 
-      if (response.ok) {
-        // Redirecionar para página de confirmação ou URL específica
-        if (data.redirectUrl) {
-          window.location.href = data.redirectUrl
-        } else {
-          router.push("/presenca-confirmada")
-        }
-      } else {
-        // Em caso de erro, mostrar mensagem ou redirecionar
+      if (!response.ok) {
         console.error("Erro no envio:", data)
-        // Manter na mesma página para o usuário tentar novamente
       }
+
+      // Não redireciona. Exibe popup de sucesso.
+      alert('Dados enviados com sucesso!')
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error)
@@ -174,9 +195,6 @@ export default function PreSelecaoPage() {
           <CardContent className="p-0 space-y-6">
             {formFields.map((field) => (
               <div className="space-y-2" key={field.id}>
-                <Label htmlFor={field.id} className="text-primary font-semibold">
-                  {field.label}
-                </Label>
                 <Input
                   id={field.id}
                   type={field.type}
