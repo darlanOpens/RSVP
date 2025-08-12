@@ -45,10 +45,16 @@ export async function sendToWebhook(
   webhookType: WebhookType,
   payload: Omit<WebhookPayload, 'form_id' | 'form_title'>
 ): Promise<Response> {
-  
-  console.log(`🚀 Enviando ${webhookType} para API route:`, payload);
-  
-  return fetch('/api/webhook', {
+  const debug = process.env.NEXT_PUBLIC_DEBUG_WEBHOOKS === 'true'
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+  const apiUrl = `${basePath}/api/webhook`
+
+  if (debug) {
+    // eslint-disable-next-line no-console
+    console.log(`🚀 Enviando ${webhookType} para API route:`, payload)
+  }
+
+  return fetch(apiUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
