@@ -103,14 +103,30 @@ WEBHOOK_RSVP_URL=https://meu-novo-webhook.com/api/rsvp
 - ✅ **Configuração centralizada**: Tudo no EasyPanel
 - ✅ **Fallback seguro**: Valores padrão se não configurado
 - ✅ **TypeScript**: Tipagem completa para segurança
+- ✅ **API Routes**: Variáveis de ambiente seguras no servidor
+- ✅ **Debug integrado**: Endpoint para verificar configurações
 
-## 🆘 Troubleshooting
+## 🔍 Debug e Troubleshooting
+
+### Verificar se as variáveis estão sendo lidas
+Acesse: `https://seu-dominio.com/api/debug`
+
+Esse endpoint mostra:
+- Se as variáveis de ambiente estão definidas
+- Quais valores estão sendo usados
+- Status da configuração
 
 ### Problema: Formulário não envia
-**Solução**: Verifique se as URLs dos webhooks estão configuradas corretamente no EasyPanel
+**Solução**: 
+1. Verifique o console do navegador para logs detalhados
+2. Acesse `/api/debug` para verificar as variáveis
+3. Confirme se as URLs dos webhooks estão corretas no EasyPanel
 
 ### Problema: Erro 404 no webhook
 **Solução**: Verifique se a URL do webhook está correta e acessível
 
-### Problema: Webhook recebe dados com IDs/Titles errados
-**Solução**: Os IDs e Titles são fixos no código, não precisam ser configurados
+### Problema: Variáveis não estão sendo lidas
+**Solução**: 
+1. Confirme que não há aspas extras nas variáveis de ambiente
+2. Reinicie o projeto após alterar as variáveis
+3. Use `/api/debug` para verificar

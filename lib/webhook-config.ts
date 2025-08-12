@@ -38,25 +38,24 @@ export type WebhookPayload = {
 };
 
 /**
- * Função utilitária para enviar dados para webhook
+ * Função utilitária para enviar dados para webhook via API route
+ * Agora usa a API route interna que tem acesso às variáveis de ambiente
  */
 export async function sendToWebhook(
   webhookType: WebhookType,
   payload: Omit<WebhookPayload, 'form_id' | 'form_title'>
 ): Promise<Response> {
-  const config = WEBHOOK_CONFIG[webhookType];
   
-  const fullPayload: WebhookPayload = {
-    ...payload,
-    form_id: config.FORM_ID,
-    form_title: config.FORM_TITLE,
-  };
-
-  return fetch(config.URL, {
+  console.log(`🚀 Enviando ${webhookType} para API route:`, payload);
+  
+  return fetch('/api/webhook', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(fullPayload),
+    body: JSON.stringify({
+      type: webhookType,
+      ...payload,
+    }),
   });
 }

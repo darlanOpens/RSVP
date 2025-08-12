@@ -1,0 +1,5 @@
+[33mefa8e87[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Implementação de envio de dados para webhook na página EventLandingPage e adição de funcionalidade de pré-seleção na página EmailNotFoundPage, incluindo feedback visual para o usuário e melhorias na experiência de uso.
+[33m5013338[m Melhoria no layout da página EventLandingPage, ajustando a disposição dos elementos e a classe CSS para melhor alinhamento e apresentação do rótulo do próximo encontro.
+[33ma60a785[m Atualização da página EventLandingPage com melhorias nos textos para maior clareza e personalização, além da reestruturação da seção "Como funciona" para melhor apresentação dos tópicos abordados durante o encontro.
+[33me74707c[m Atualização da imagem de fundo do projeto, substituindo o arquivo background.png por uma nova versão.
+[33mf3c8d49[m Atualização da página EventLandingPage com a inclusão do rótulo do próximo encontro, melhorias no layout e ajustes nos textos para maior clareza e apresentação. Substituição do logo e atualização de imagens de fundo.

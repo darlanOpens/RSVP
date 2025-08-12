@@ -52,12 +52,12 @@ function EventLandingPageContent() {
       if (response.ok && data.success && data.redirectUrl) {
         window.location.href = data.redirectUrl;
       } else {
-        router.push("/pre-selecao");
+        router.push("/presenca-confirmada");
       }
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error)
-      router.push("/pre-selecao")
+      router.push("/presenca-confirmada")
     } finally {
       setIsLoading(false)
     }
