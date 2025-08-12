@@ -6,16 +6,20 @@ import TagManager from "react-gtm-module"
 export default function GTMProvider(): null {
   useEffect(() => {
     const gtmId = process.env.NEXT_PUBLIC_GTM_ID
+    const isProduction = process.env.NODE_ENV === "production"
 
-    if (!gtmId) {
-      if (process.env.NODE_ENV !== "production") {
-        // eslint-disable-next-line no-console
-        console.warn("GTM: NEXT_PUBLIC_GTM_ID não definido. O Tag Manager não será inicializado.")
-      }
+    if (!isProduction || !gtmId) {
       return
     }
 
-    TagManager.initialize({ gtmId })
+    const auth = process.env.NEXT_PUBLIC_GTM_AUTH
+    const preview = process.env.NEXT_PUBLIC_GTM_PREVIEW
+
+    TagManager.initialize(
+      auth && preview
+        ? { gtmId, auth, preview }
+        : { gtmId }
+    )
   }, [])
 
   return null
