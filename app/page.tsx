@@ -52,6 +52,11 @@ function EventLandingPageContent() {
       if (response.ok && data.success && data.redirectUrl) {
         window.location.href = data.redirectUrl;
       } else {
+        // Se não foi sucesso, mas tem webhook_url para pré-seleção
+        if (data.webhook_url) {
+          // Armazenar o webhook_url para usar na pré-seleção
+          sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url);
+        }
         router.push("/pre-selecao");
       }
 

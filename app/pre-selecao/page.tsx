@@ -1,12 +1,87 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Loader2 } from "lucide-react"
+import { sendToWebhook } from "@/lib/webhook-config"
 
 export default function PreSelecaoPage() {
+  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+  const [webhookUrl, setWebhookUrl] = useState<string | null>(null)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    role: "",
+  })
+
+  useEffect(() => {
+    // Verificar se existe webhook_url da pré-seleção no sessionStorage
+    const savedWebhookUrl = sessionStorage.getItem('preSelecaoWebhookUrl')
+    if (savedWebhookUrl) {
+      setWebhookUrl(savedWebhookUrl)
+    }
+  }, [])
+
+  const handleInputChange = (id: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }))
+  }
+
+  const handleSubmit = async () => {
+    setIsLoading(true)
+    try {
+      let response: Response
+
+      if (webhookUrl) {
+        // Usar a webhook_url específica do Wait node
+        response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
+        // Limpar o webhook_url usado
+        sessionStorage.removeItem('preSelecaoWebhookUrl')
+      } else {
+        // Fallback para o webhook padrão
+        response = await sendToWebhook("NEWSLETTER", formData)
+      }
+
+      const data = await response.json()
+
+      if (response.ok) {
+        // Redirecionar para página de confirmação ou URL específica
+        if (data.redirectUrl) {
+          window.location.href = data.redirectUrl
+        } else {
+          router.push("/presenca-confirmada")
+        }
+      } else {
+        // Em caso de erro, mostrar mensagem ou redirecionar
+        console.error("Erro no envio:", data)
+        // Manter na mesma página para o usuário tentar novamente
+      }
+
+    } catch (error) {
+      console.error("Erro ao enviar o formulário:", error)
+      // Manter na mesma página para o usuário tentar novamente
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const copy = {
     title: "Pré-seleção",
     lead1:
@@ -107,15 +182,27 @@ export default function PreSelecaoPage() {
                   placeholder={field.placeholder}
                   autoComplete={field.autoComplete}
                   inputMode={field.inputMode as any}
+                  value={formData[field.id as keyof typeof formData]}
+                  onChange={(e) => handleInputChange(field.id, e.target.value)}
+                  disabled={isLoading}
                   className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-12 px-4 text-base"
                 />
               </div>
             ))}
             <Button
               size="lg"
+              onClick={handleSubmit}
+              disabled={isLoading}
               className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-3 text-base font-semibold uppercase tracking-widest"
             >
-              {copy.cta}
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Enviando...
+                </>
+              ) : (
+                copy.cta
+              )}
             </Button>
           </CardContent>
         </Card>
