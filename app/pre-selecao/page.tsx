@@ -1,0 +1,158 @@
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent } from "@/components/ui/card"
+import { ELGALogo } from "@/components/ui/elga-logo"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+
+export default function PreSelecaoPage() {
+  const copy = {
+    title: "Pré-seleção",
+    lead1:
+      "Estamos finalizando as presenças do E.L.G.A. Algumas confirmações adicionais serão liberadas por seleção.",
+    lead2:
+      "Quer participar? Apresente-se agora. Leva menos de 1 minuto. Nossa curadoria é contínua e as confirmações extras são limitadas.",
+    cta: "Entrar na pré-seleção",
+    disclaimer1:
+      "Fique atento! Se aprovado, você receberá um contato do nosso time!",
+    disclaimer2:
+      "Seus dados são usados apenas para a avaliação de presença.",
+    supportIntro:
+      "Se você acredita que houve um engano ou deseja mais informações sobre o evento, entre em contato conosco para verificar os detalhes e, se possível, garantir sua participação.",
+    supportTitle: "Contato para suporte:",
+    supportEmail: "contato@opens.com.br",
+    comoFuncionaTitle: "Como funciona",
+    comoFuncionaText:
+      "Nossa equipe valida as últimas presenças ao longo do dia. Se o seu perfil se encaixar nesta edição, confirmaremos por e-mail e WhatsApp.",
+    tempoTitle: "Tempo & exclusividade",
+    tempoText:
+      "As confirmações adicionais são raras e saem rápido — envie sua apresentação agora.",
+  }
+
+  const formFields: Array<{
+    id: string
+    label: string
+    type: string
+    placeholder: string
+    autoComplete?: string
+    inputMode?: string
+  }> = [
+    {
+      id: "name",
+      label: "Nome",
+      type: "text",
+      placeholder: "Seu nome completo",
+      autoComplete: "name",
+    },
+    {
+      id: "email",
+      label: "E-mail",
+      type: "email",
+      placeholder: "Seu melhor e-mail",
+      autoComplete: "email",
+    },
+    {
+      id: "phone",
+      label: "Telefone",
+      type: "tel",
+      placeholder: "(XX) 9XXXX-XXXX",
+      autoComplete: "tel",
+      inputMode: "tel",
+    },
+    {
+      id: "company",
+      label: "Empresa",
+      type: "text",
+      placeholder: "Nome da empresa",
+      autoComplete: "organization",
+    },
+    {
+      id: "role",
+      label: "Cargo",
+      type: "text",
+      placeholder: "Seu cargo/função",
+      autoComplete: "organization-title",
+    },
+  ]
+
+  return (
+    <div className="min-h-screen bg-background text-text-high flex flex-col items-center justify-center p-6">
+      <div className="w-full max-w-4xl mx-auto text-center space-y-8">
+        <div className="flex justify-center">
+          <ELGALogo size="md" />
+        </div>
+
+        <h1 className="font-display text-4xl lg:text-6xl text-text-high font-bold tracking-wide uppercase leading-tight">
+          {copy.title}
+        </h1>
+
+        <p className="font-sans text-xl lg:text-2xl text-primary font-light max-w-3xl mx-auto">
+          {copy.lead1}
+        </p>
+        <p className="font-sans text-lg text-text-muted leading-relaxed max-w-3xl mx-auto">
+          {copy.lead2}
+        </p>
+
+        <Card className="bg-surface-card border-primary/20 p-8 rounded-lg max-w-md mx-auto text-left">
+          <CardContent className="p-0 space-y-6">
+            {formFields.map((field) => (
+              <div className="space-y-2" key={field.id}>
+                <Label htmlFor={field.id} className="text-primary font-semibold">
+                  {field.label}
+                </Label>
+                <Input
+                  id={field.id}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  autoComplete={field.autoComplete}
+                  inputMode={field.inputMode as any}
+                  className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-12 px-4 text-base"
+                />
+              </div>
+            ))}
+            <Button
+              size="lg"
+              className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-3 text-base font-semibold uppercase tracking-widest"
+            >
+              {copy.cta}
+            </Button>
+          </CardContent>
+        </Card>
+
+        <div className="font-sans text-text-muted text-sm space-y-2">
+          <p>{copy.disclaimer1}</p>
+          <p>{copy.disclaimer2}</p>
+        </div>
+
+        <div className="text-left max-w-3xl mx-auto space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-display text-xl text-text-high">{copy.comoFuncionaTitle}</h3>
+            <p className="font-sans text-text-muted">{copy.comoFuncionaText}</p>
+          </div>
+          <div className="space-y-2">
+            <h3 className="font-display text-xl text-text-high">{copy.tempoTitle}</h3>
+            <p className="font-sans text-text-muted">{copy.tempoText}</p>
+          </div>
+        </div>
+
+        <div className="font-sans text-text-muted text-sm space-y-4">
+          <p>{copy.supportIntro}</p>
+          <p>
+            <span className="font-semibold text-primary">{copy.supportTitle}</span>{" "}
+            <a href={`mailto:${copy.supportEmail}`} className="hover:underline">
+              {copy.supportEmail}
+            </a>
+          </p>
+        </div>
+
+        <Link href="/" className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          Voltar para a página inicial
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+

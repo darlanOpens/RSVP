@@ -54,7 +54,7 @@ Quando `isEmailFromUrl` é verdadeiro, exibimos uma mensagem com o e‑mail dete
 ```
 
 ### Envio e redirecionamento
-O clique no botão chama `handleSubmit`, que envia os dados ao webhook e redireciona conforme a resposta. Em caso de erro ou e‑mail não encontrado, redireciona para `elga/email-nao-encontrado`.
+O clique no botão chama `handleSubmit`, que envia os dados ao webhook e redireciona conforme a resposta. Em caso de erro ou e‑mail não encontrado, redireciona para `/pre-selecao`.
 
 ```tsx
 const handleSubmit = async () => {
@@ -71,10 +71,10 @@ const handleSubmit = async () => {
     if (response.ok && data.success && data.redirectUrl) {
       window.location.href = data.redirectUrl
     } else {
-      router.push("elga/email-nao-encontrado")
+      router.push("/pre-selecao")
     }
   } catch (error) {
-    router.push("elga/email-nao-encontrado")
+    router.push("/pre-selecao")
   } finally {
     setIsLoading(false)
   }
@@ -100,13 +100,13 @@ function buildElgaInviteUrl(baseUrl: string, email: string) {
 - Acesse sem o parâmetro → deve aparecer o input + botão.
 - Clique em confirmar e verifique o comportamento:
   - Se resposta contiver `success` e `redirectUrl` → redireciona para o link retornado.
-  - Caso contrário/erro → vai para `elga/email-nao-encontrado`.
+  - Caso contrário/erro → vai para `/pre-selecao`.
 
 ### Boas práticas e cuidados
 - Encode sempre o e‑mail ao montar o link.
 - O componente é client-side (usa `"use client"`, hooks e estado).
 - Trate `isLoading` para evitar cliques múltiplos.
-- A validação final do e‑mail é do backend; a UI redireciona para a página de “email não encontrado” quando necessário.
+- A validação final do e‑mail é do backend; a UI redireciona para a página de pré-seleção quando necessário.
 
 ### Perguntas comuns
 - Posso digitar outro e‑mail quando vier `emailconf`?

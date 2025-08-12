@@ -52,12 +52,12 @@ function EventLandingPageContent() {
       if (response.ok && data.success && data.redirectUrl) {
         window.location.href = data.redirectUrl;
       } else {
-        router.push("elga/email-nao-encontrado");
+        router.push("/pre-selecao");
       }
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error)
-      router.push("elga/email-nao-encontrado")
+      router.push("/pre-selecao")
     } finally {
       setIsLoading(false)
     }
