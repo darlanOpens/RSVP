@@ -10,6 +10,7 @@ import { ELGALogo } from "@/components/ui/elga-logo"
 import Link from "next/link"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { sendToWebhook } from "@/lib/webhook-config"
+import { getPreSelecaoEmail, getPreSelecaoWebhookUrl, clearPreSelecaoWebhookUrl } from "@/lib/client-storage"
 
 export default function PreSelecaoPage() {
   const router = useRouter()
@@ -25,17 +26,15 @@ export default function PreSelecaoPage() {
 
   useEffect(() => {
     // Verificar se existe webhook_url da pré-seleção no sessionStorage
-    const savedWebhookUrl = sessionStorage.getItem('preSelecaoWebhookUrl')
+    const savedWebhookUrl = getPreSelecaoWebhookUrl()
     if (savedWebhookUrl) {
       setWebhookUrl(savedWebhookUrl)
     }
     // Pré-preencher email salvo a partir do primeiro formulário
-    try {
-      const savedEmail = localStorage.getItem('preSelecaoEmail')
-      if (savedEmail) {
-        setFormData(prev => ({ ...prev, email: savedEmail }))
-      }
-    } catch {}
+    const savedEmail = getPreSelecaoEmail()
+    if (savedEmail) {
+      setFormData(prev => ({ ...prev, email: savedEmail }))
+    }
   }, [])
 
   const handleInputChange = (id: string, value: string) => {
@@ -81,7 +80,7 @@ export default function PreSelecaoPage() {
           body: JSON.stringify({ resumeUrl: webhookUrl, payload: formData }),
         })
         // Limpar o webhook_url usado
-        sessionStorage.removeItem('preSelecaoWebhookUrl')
+        clearPreSelecaoWebhookUrl()
       } else {
         // Fallback para o webhook padrão
         response = await sendToWebhook("NEWSLETTER", formData)
