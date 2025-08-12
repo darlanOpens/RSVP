@@ -49,15 +49,17 @@ function EventLandingPageContent() {
 
       const data = await response.json();
 
-      if (response.ok && data.success && data.redirectUrl) {
-        window.location.href = data.redirectUrl;
-      } else {
-        // Se não foi sucesso, mas tem webhook_url para pré-seleção
+      if (response.ok && data.redirectUrl) {
+        // Sempre que vier webhook_url, armazenamos antes de redirecionar
         if (data.webhook_url) {
-          // Armazenar o webhook_url para usar na pré-seleção
-          sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url);
+          sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url)
         }
-        router.push("/pre-selecao");
+        window.location.href = data.redirectUrl
+      } else {
+        if (data.webhook_url) {
+          sessionStorage.setItem('preSelecaoWebhookUrl', data.webhook_url)
+        }
+        router.push("/pre-selecao")
       }
 
     } catch (error) {
