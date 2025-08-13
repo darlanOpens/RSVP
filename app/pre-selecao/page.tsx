@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import Link from "next/link"
-import { ArrowLeft, Loader2 } from "lucide-react"
+import { ArrowLeft, Loader2, CheckCircle } from "lucide-react"
 import { sendToWebhook } from "@/lib/webhook-config"
 import { toast } from "sonner"
 import { getPreSelecaoEmail, getPreSelecaoWebhookUrl, clearPreSelecaoWebhookUrl } from "@/lib/client-storage"
@@ -17,6 +17,7 @@ export default function PreSelecaoPage() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
   const [webhookUrl, setWebhookUrl] = useState<string | null>(null)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -95,8 +96,9 @@ export default function PreSelecaoPage() {
         return
       }
 
-      // Não redireciona. Exibe toast de sucesso.
+      // Não redireciona. Exibe toast de sucesso e some com o formulário
       toast.success('Dados enviados com sucesso!')
+      setIsSubmitted(true)
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error)
@@ -195,36 +197,45 @@ export default function PreSelecaoPage() {
 
         <Card className="bg-surface-card border-primary/20 p-8 rounded-lg max-w-md mx-auto text-left">
           <CardContent className="p-0 space-y-6">
-            {formFields.map((field) => (
-              <div className="space-y-2" key={field.id}>
-                <Input
-                  id={field.id}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  autoComplete={field.autoComplete}
-                  inputMode={field.inputMode as any}
-                  value={formData[field.id as keyof typeof formData]}
-                  onChange={(e) => handleInputChange(field.id, e.target.value)}
-                  disabled={isLoading}
-                  className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-12 px-4 text-base"
-                />
+            {isSubmitted ? (
+              <div className="flex flex-col items-center justify-center py-8">
+                <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
+                <p className="font-sans text-lg text-text-high">Recebemos seus dados. Obrigado!</p>
               </div>
-            ))}
-            <Button
-              size="lg"
-              onClick={handleSubmit}
-              disabled={isLoading}
-              className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-3 text-base font-semibold uppercase tracking-widest"
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Enviando...
-                </>
-              ) : (
-                copy.cta
-              )}
-            </Button>
+            ) : (
+              <>
+                {formFields.map((field) => (
+                  <div className="space-y-2" key={field.id}>
+                    <Input
+                      id={field.id}
+                      type={field.type}
+                      placeholder={field.placeholder}
+                      autoComplete={field.autoComplete}
+                      inputMode={field.inputMode as any}
+                      value={formData[field.id as keyof typeof formData]}
+                      onChange={(e) => handleInputChange(field.id, e.target.value)}
+                      disabled={isLoading}
+                      className="font-sans bg-transparent border-primary text-text-high placeholder:text-primary/70 h-12 px-4 text-base"
+                    />
+                  </div>
+                ))}
+                <Button
+                  size="lg"
+                  onClick={handleSubmit}
+                  disabled={isLoading}
+                  className="w-full bg-primary hover:bg-primary-dark text-background-dark px-8 py-3 text-base font-semibold uppercase tracking-widest"
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    copy.cta
+                  )}
+                </Button>
+              </>
+            )}
           </CardContent>
         </Card>
 
