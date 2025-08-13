@@ -9,7 +9,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import Link from "next/link"
 import { ArrowLeft, Loader2, CheckCircle } from "lucide-react"
-import { sendToWebhook } from "@/lib/webhook-config"
 import { toast } from "sonner"
 import { getPreSelecaoEmail, getPreSelecaoWebhookUrl, clearPreSelecaoWebhookUrl } from "@/lib/client-storage"
 
@@ -69,24 +68,22 @@ export default function PreSelecaoPage() {
   const handleSubmit = async () => {
     setIsLoading(true)
     try {
-      let response: Response
-
-      if (webhookUrl) {
-        // Usar um proxy server-side para evitar CORS ao chamar a resumeUrl do n8n
-        const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
-        response = await fetch(`${basePath}/api/wait-resume`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ resumeUrl: webhookUrl, payload: formData }),
-        })
-        // Limpar o webhook_url usado
-        clearPreSelecaoWebhookUrl()
-      } else {
-        // Fallback para o webhook padrão
-        response = await sendToWebhook("NEWSLETTER", formData)
+      if (!webhookUrl) {
+        toast.error('Link de continuação indisponível. Volte e confirme sua presença novamente.')
+        return
       }
+
+      // Usar um proxy server-side para evitar CORS ao chamar a resumeUrl do n8n
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+      const response = await fetch(`${basePath}/api/wait-resume`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ resumeUrl: webhookUrl, payload: formData }),
+      })
+      // Limpar o webhook_url usado
+      clearPreSelecaoWebhookUrl()
 
       const data = await response.json()
 

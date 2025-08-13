@@ -5,24 +5,17 @@ Este documento explica como configurar os webhooks dos formulários através de 
 ## ✅ Formulários Configurados
 
 1. **Formulário Principal de RSVP** - `app/page.tsx`
-2. **Formulário de Pré-seleção** - `app/email-nao-encontrado/page.tsx`
-3. **Formulário de Contato** - (Preparado para futuro uso)
+2. **Formulário de Pré-seleção** - `app/pre-selecao/page.tsx`
 
 ## 🔧 Variáveis de Ambiente no EasyPanel
 
 ### Configuração Obrigatória
 
-No painel do EasyPanel, configure apenas essas 3 variáveis de ambiente:
+No painel do EasyPanel, configure apenas estas variáveis de ambiente:
 
 ```bash
 # Webhook do formulário de RSVP (OBRIGATÓRIO)
 WEBHOOK_RSVP_URL=https://n8n.opens.com.br/webhook/hubspot-form
-
-# Webhook do formulário de pré-seleção (OBRIGATÓRIO) 
-WEBHOOK_NEWSLETTER_URL=https://n8n.opens.com.br/webhook/pre-selecao-form
-
-# Webhook do formulário de contato (OPCIONAL - para uso futuro)
-WEBHOOK_CONTACT_URL=https://n8n.opens.com.br/webhook/contact-form
 ```
 
 
@@ -40,11 +33,9 @@ WEBHOOK_CONTACT_URL=https://n8n.opens.com.br/webhook/contact-form
 
 ## 🎯 Valores Padrão (Fallback)
 
-Se as variáveis não forem configuradas, o sistema usará os valores padrão:
+Se a variável não for configurada, o sistema usará o valor padrão:
 
 - **WEBHOOK_RSVP_URL**: `https://n8n.opens.com.br/webhook/hubspot-form`
-- **WEBHOOK_NEWSLETTER_URL**: `https://n8n.opens.com.br/webhook/pre-selecao-form`
-- **WEBHOOK_CONTACT_URL**: `https://n8n.opens.com.br/webhook/contact-form`
 
 ## 🔄 Como Trocar os Webhooks
 
@@ -75,25 +66,10 @@ WEBHOOK_RSVP_URL=https://meu-novo-webhook.com/api/rsvp
 ```
 
 ### Formulário de Pré-seleção
-```json
-{
-  "email": "usuario@exemplo.com",
-  "name": "Nome do Usuário",
-  "form_id": "PRE_SELECAO",
-  "form_title": "Pré-seleção ELGA"
-}
-```
+Enviado exclusivamente via `resumeUrl` do n8n (sem webhook externo dedicado).
 
 ### Formulário de Contato (Futuro)
-```json
-{
-  "email": "usuario@exemplo.com",
-  "name": "Nome do Usuário",
-  "message": "Mensagem do usuário",
-  "form_id": "CONTACT",
-  "form_title": "Contato ELGA"
-}
-```
+Não utilizado no momento.
 
 ## 🚀 Benefícios desta Implementação
 

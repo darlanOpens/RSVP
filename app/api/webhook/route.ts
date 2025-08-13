@@ -3,19 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 // Configurações dos webhooks (servidor-side)
 const WEBHOOK_CONFIG = {
   RSVP: {
-    URL: process.env.WEBHOOK_RSVP_URL || "https://n8n.opens.com.br/webhook/hubspot-form",
+    URL: process.env.WEBHOOK_RSVP_URL || "https://n8n.opens.com.br/webhook/confirmacao",
     FORM_ID: "ELGA",
     FORM_TITLE: "ELGA",
-  },
-  NEWSLETTER: {
-    URL: process.env.WEBHOOK_NEWSLETTER_URL || "https://n8n.opens.com.br/webhook/pre-selecao-form",
-    FORM_ID: "PRE_SELECAO", 
-    FORM_TITLE: "Pré-seleção ELGA",
-  },
-  CONTACT: {
-    URL: process.env.WEBHOOK_CONTACT_URL || "https://n8n.opens.com.br/webhook/contact-form",
-    FORM_ID: "CONTACT",
-    FORM_TITLE: "Contato ELGA",
   },
 } as const;
 

@@ -25,8 +25,7 @@ NEXT_PUBLIC_DEBUG_WEBHOOKS=false
 NEXT_PUBLIC_GTM_ID=GTM-K3SBSHG5
 
 WEBHOOK_RSVP_URL=https://n8n.opens.com.br/webhook/confirmacao
-WEBHOOK_NEWSLETTER_URL=https://n8n.opens.com.br/webhook/pre-selecao-form
-WEBHOOK_CONTACT_URL=https://n8n.opens.com.br/webhook/contact-form
+
 
 # Opcional: reforço de segurança do proxy server-side
 N8N_RESUME_ALLOWED_PREFIXES=https://n8n.opens.com.br/webhook-waiting/,https://n8n.opens.com.br/webhook/
@@ -41,7 +40,7 @@ Observação: com `basePath: '/elga'` no `next.config.mjs`, chamadas internas no
 ### 2.1) API interna de webhooks
 
 - Arquivo: `app/api/webhook/route.ts`
-- Recebe POST do front e encaminha ao n8n conforme o tipo (`RSVP`, `NEWSLETTER`, `CONTACT`).
+- Recebe POST do front e encaminha ao n8n apenas para o tipo (`RSVP`).
 - O cliente chama via `fetch("${basePath}/api/webhook", ...)`.
 
 ### 2.2) Proxy para evitar CORS na `resumeUrl`
@@ -127,7 +126,7 @@ Modelos de resposta do n8n:
     - 11 dígitos: `(XX) 9XXXX-XXXX`
   - **Envio**:
     - Se existir `webhookUrl` (do Wait): POST em `${BASE_PATH}/api/wait-resume` com `{ resumeUrl, payload }`.
-    - Caso contrário: fallback para `sendToWebhook('NEWSLETTER', payload)`.
+    - Caso não exista `webhookUrl`: exibe erro solicitando refazer a confirmação na landing.
   - **Feedback**: toast Sonner (sucesso/erro) e, se sucesso, oculta o formulário e exibe ícone de check.
 
 Exemplo de envio via proxy (conceito):
@@ -231,7 +230,7 @@ No Wait node, configure **Respond = Immediately** e retorne algo como:
 
 - `app/page.tsx` — salva `webhook_url`/e-mail e redireciona.
 - `app/pre-selecao/page.tsx` — pré-preenche e-mail, máscara de telefone, envia via proxy, toast + ícone de sucesso.
-- `app/api/webhook/route.ts` — API interna (RSVP/NEWSLETTER/CONTACT).
+- `app/api/webhook/route.ts` — API interna (RSVP).
 - `app/api/wait-resume/route.ts` — proxy seguro para a `resumeUrl` do n8n.
 - `lib/client-storage.ts` — storage no cliente (local/session).
 - `app/layout.tsx` — Toaster Sonner global e GTM (produção).

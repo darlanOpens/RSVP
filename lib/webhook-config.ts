@@ -11,20 +11,6 @@ export const WEBHOOK_CONFIG = {
     FORM_ID: "ELGA",
     FORM_TITLE: "ELGA",
   },
-  
-  // Webhook do formulário de pré-seleção
-  NEWSLETTER: {
-    URL: process.env.WEBHOOK_NEWSLETTER_URL || "https://n8n.opens.com.br/webhook/pre-selecao-form",
-    FORM_ID: "PRE_SELECAO",
-    FORM_TITLE: "Pré-seleção ELGA",
-  },
-  
-  // Webhook do formulário de contato (terceiro formulário se necessário)
-  CONTACT: {
-    URL: process.env.WEBHOOK_CONTACT_URL || "https://n8n.opens.com.br/webhook/contact-form",
-    FORM_ID: "CONTACT",
-    FORM_TITLE: "Contato ELGA",
-  },
 } as const;
 
 // Tipos para TypeScript
