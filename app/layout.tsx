@@ -6,6 +6,7 @@ import { TwentyFirstToolbar } from '@21st-extension/toolbar-next'
 import { ReactPlugin } from '@21st-extension/react'
 import { cn } from '@/lib/utils'
 import GTMProvider from '@/components/gtm-provider'
+import { Toaster as SonnerToaster } from '@/components/ui/sonner'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ export default function RootLayout({
         )}
         <GTMProvider />
         {children}
+        <SonnerToaster richColors position="top-center" />
         {enableToolbar ? <TwentyFirstToolbar config={{ plugins: [ReactPlugin] }} /> : null}
       </body>
     </html>

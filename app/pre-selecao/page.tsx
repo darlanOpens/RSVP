@@ -10,6 +10,7 @@ import { ELGALogo } from "@/components/ui/elga-logo"
 import Link from "next/link"
 import { ArrowLeft, Loader2 } from "lucide-react"
 import { sendToWebhook } from "@/lib/webhook-config"
+import { toast } from "sonner"
 import { getPreSelecaoEmail, getPreSelecaoWebhookUrl, clearPreSelecaoWebhookUrl } from "@/lib/client-storage"
 
 export default function PreSelecaoPage() {
@@ -90,10 +91,12 @@ export default function PreSelecaoPage() {
 
       if (!response.ok) {
         console.error("Erro no envio:", data)
+        toast.error('Não foi possível enviar seus dados. Tente novamente.')
+        return
       }
 
-      // Não redireciona. Exibe popup de sucesso.
-      alert('Dados enviados com sucesso!')
+      // Não redireciona. Exibe toast de sucesso.
+      toast.success('Dados enviados com sucesso!')
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error)
