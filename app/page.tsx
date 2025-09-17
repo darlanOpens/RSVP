@@ -13,7 +13,6 @@ import { ELGALogo } from "@/components/ui/elga-logo"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { sendToWebhook } from "@/lib/webhook-config"
 import { savePreSelecaoEmail, savePreSelecaoWebhookUrl } from "@/lib/client-storage"
-import { DebugEnv } from "@/components/ui/debug-env"
 
 // Componente separado que usa useSearchParams
 function EventLandingPageContent() {
@@ -476,11 +475,8 @@ function EventLandingPageFallback() {
 // Componente principal exportado com Suspense
 export default function EventLandingPage() {
   return (
-    <>
-      <Suspense fallback={<EventLandingPageFallback />}>
-        <EventLandingPageContent />
-      </Suspense>
-      <DebugEnv />
-    </>
+    <Suspense fallback={<EventLandingPageFallback />}>
+      <EventLandingPageContent />
+    </Suspense>
   )
 }
