@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, MapPin, Users, TrendingUp, Target, Sparkles, Award, Diamond, Star, Crown, Zap, Loader2 } from "lucide-react"
-import { NEXT_MEETING_LABEL } from "@/components/ui/next-meeting"
+import { NEXT_MEETING_LABEL, DEBATE_THEME, HAS_SPECIAL_GUEST, SPECIAL_GUEST_NAME } from "@/components/ui/next-meeting"
 import Image from "next/image"
 import { ELGALogo } from "@/components/ui/elga-logo"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
@@ -79,6 +79,9 @@ function EventLandingPageContent() {
 
   // Data/hora do próximo encontro (vinda do componente utilitário)
   const nextMeetingLabel = NEXT_MEETING_LABEL
+  const debateTheme = DEBATE_THEME
+  const hasSpecialGuest = HAS_SPECIAL_GUEST
+  const specialGuestName = SPECIAL_GUEST_NAME
 
   return (
     <div className="min-h-screen bg-background">
@@ -122,6 +125,20 @@ function EventLandingPageContent() {
                       próximo encontro: {nextMeetingLabel}
                     </span>
                   </div>
+                  <div className="mt-2 flex items-start justify-center lg:justify-start gap-2 text-primary">
+                    <Target className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <span className="font-sans text-base md:text-lg font-semibold leading-tight">
+                      Tema do debate: {debateTheme}
+                    </span>
+                  </div>
+                  {hasSpecialGuest && (
+                    <div className="mt-2 flex items-start justify-center lg:justify-start gap-2 text-primary">
+                      <Users className="w-5 h-5 mt-1 flex-shrink-0" />
+                      <span className="font-sans text-base md:text-lg font-semibold leading-tight">
+                        Convidado especial: {specialGuestName}
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-4 w-full">

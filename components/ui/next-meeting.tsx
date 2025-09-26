@@ -108,4 +108,10 @@ const labelFromBr = formatFromBr(
 
 export const NEXT_MEETING_LABEL = labelFromIso ?? labelFromBr ?? "Em breve"
 
+export const DEBATE_THEME = process.env.NEXT_PUBLIC_DEBATE_THEME ?? "Tema a ser definido"
+
+// Convidado especial
+export const HAS_SPECIAL_GUEST = process.env.NEXT_PUBLIC_HAS_SPECIAL_GUEST === "true"
+export const SPECIAL_GUEST_NAME = process.env.NEXT_PUBLIC_SPECIAL_GUEST_NAME ?? "Convidado Especial"
+
 
